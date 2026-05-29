@@ -120,23 +120,28 @@ export default function DreamZinePresentation() {
         </div>
 
         {/* Навигационный индекс слева */}
-        <div className="lg:col-span-2 hidden lg:flex flex-col space-y-3 border-l-2 border-[#CCFF00] pl-4 self-start mt-2">
-          {SLIDES.map((slide, idx) => (
-            <button
-              key={slide.id}
-              onClick={() => {
-                setIsGlitching(true);
-                setCurrentSlide(idx);
-              }}
-              className={`text-left font-mono text-[11px] uppercase transition-all duration-300 ${
-                currentSlide === idx
-                  ? "text-[#CCFF00] font-bold tracking-widest translate-x-2"
-                  : "text-zinc-600 hover:text-white"
-              }`}
-            >
-              [{slide.id}] {slide.tag}
-            </button>
-          ))}
+        <div className="lg:col-span-2 flex flex-col items-center lg:items-start justify-center">
+          <div className="border-2 border-dashed border-zinc-800 p-4 w-full max-w-[180px] bg-black text-left lg:text-left space-y-4">
+            <div className="font-mono text-[10px] text-zinc-500">МАТРИЦА_СЛАЙДОВ</div>
+            <div className="flex flex-col space-y-1">
+              {SLIDES.map((slide, idx) => (
+                <button
+                  key={slide.id}
+                  onClick={() => {
+                    setIsGlitching(true);
+                    setCurrentSlide(idx);
+                  }}
+                  className={`text-left font-mono text-[11px] uppercase transition-all duration-300 ${
+                    currentSlide === idx
+                      ? "text-[#CCFF00] font-bold tracking-widest"
+                      : "text-zinc-600 hover:text-white"
+                  }`}
+                >
+                  [{slide.id}] {slide.tag}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Исполнительный контейнер контента */}
