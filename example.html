@@ -1,0 +1,1241 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ЮНГП — Software Strategy 2026</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+
+        <style>
+            body {
+                font-family: "Inter", sans-serif;
+                background-color: #050506;
+                color: #f4f4f5;
+            }
+            .font-tech {
+                font-family: "Space Grotesk", sans-serif;
+            }
+            /* Neon Custom Accents */
+            .neon-text-lime {
+                color: #c6ff00;
+                text-shadow: 0 0 20px rgba(198, 255, 0, 0.2);
+            }
+            .bg-lime-brand {
+                background-color: #c6ff00;
+            }
+            .border-lime-brand {
+                border-color: #c6ff00;
+            }
+            .neon-glow-lime {
+                box-shadow: 0 0 30px rgba(198, 255, 0, 0.15);
+            }
+
+            /* Premium Framer-Motion style Slide Animations */
+            @keyframes slideIn {
+                from {
+                    opacity: 0;
+                    transform: scale(0.97) translateY(15px);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1) translateY(0);
+                }
+            }
+
+            .slide-panel {
+                display: none !important;
+            }
+
+            .slide-panel.active {
+                display: flex !important;
+                animation: slideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            }
+        </style>
+    </head>
+    <body
+        class="h-screen w-screen overflow-hidden flex flex-col justify-between p-4 md:p-6 select-none bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-zinc-900/40 via-zinc-950 to-black"
+    >
+        <header
+            class="w-full flex items-center justify-between border-b border-zinc-800/60 pb-4 z-50"
+        >
+            <div class="flex items-center gap-3">
+                <div
+                    class="h-8 w-2 bg-lime-brand shadow-[0_0_15px_rgba(198,255,0,0.6)]"
+                ></div>
+                <div>
+                    <span
+                        class="font-tech font-bold text-xs tracking-widest text-zinc-400 block"
+                        >OOO ЮНГП</span
+                    >
+                    <span class="text-sm font-medium text-white tracking-tight"
+                        >STRATEGIC DIGITAL TRANSFORMATION</span
+                    >
+                </div>
+            </div>
+            <div
+                class="flex items-center gap-4 bg-zinc-900/80 backdrop-blur-md border border-zinc-800/80 px-4 py-2 rounded-lg"
+            >
+                <div
+                    class="flex items-center gap-2 text-xs font-mono text-zinc-400"
+                >
+                    <span
+                        class="inline-block w-2 h-2 rounded-full bg-[#C6FF00] animate-pulse"
+                    ></span>
+                    <span>SYSTEM CORE: AVEVA E3D</span>
+                </div>
+                <div class="h-4 w-[1px] bg-zinc-800"></div>
+                <button
+                    onclick="toggleFullscreen()"
+                    class="text-zinc-400 hover:text-white transition-colors text-xs cursor-pointer flex items-center gap-1"
+                >
+                    <i class="fa-solid fa-expand"></i>
+                    <span class="hidden sm:inline">FULLSCREEN</span>
+                </button>
+            </div>
+        </header>
+
+        <main
+            class="flex-1 w-full my-6 relative overflow-hidden flex items-center justify-center"
+        >
+            <div
+                id="slide-1"
+                class="slide-panel active w-full h-full flex-col justify-center items-start max-w-6xl mx-auto px-4 relative"
+            >
+                <div
+                    class="absolute -right-12 top-1/2 -translate-y-1/2 w-96 h-96 bg-[#C6FF00]/5 rounded-full blur-[120px] pointer-events-none"
+                ></div>
+                <span
+                    class="text-xs font-mono tracking-[0.3em] text-zinc-500 uppercase mb-3 block"
+                    >Strategy Ecosystem // 2026</span
+                >
+                <h1
+                    class="font-tech font-bold text-6xl md:text-8xl tracking-tight text-white leading-none mb-6"
+                >
+                    PRIORITY <br /><span class="neon-text-lime font-black"
+                        >SOFTWARE</span
+                    >
+                    <br />SELECTION.
+                </h1>
+                <p
+                    class="text-zinc-400 max-w-xl text-lg font-light leading-relaxed mb-8"
+                >
+                    Transition roadmap to unified information lifecycle design
+                    modeling framework architectures tailored for ООО ЮНГП
+                    engineering ecosystem.
+                </p>
+                <div class="flex items-center gap-4">
+                    <button
+                        onclick="nextSlide()"
+                        class="bg-lime-brand text-black font-tech font-bold tracking-wider text-xs px-6 py-3 rounded-md hover:bg-white transition-all cursor-pointer shadow-lg shadow-[#C6FF00]/10 flex items-center gap-2"
+                    >
+                        INITIALIZE PRESENTATION
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <div class="text-xs font-mono text-zinc-500">
+                        PRESS → TO ADVANCE
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="slide-2"
+                class="slide-panel w-full h-full flex-col lg:flex-row items-center gap-8 max-w-6xl mx-auto px-4 justify-center"
+            >
+                <div class="w-full lg:w-1/2 space-y-6">
+                    <div
+                        class="flex items-center gap-2 text-xs font-mono text-lime-brand"
+                    >
+                        <span>02 / TECHNICAL SUPREMACY</span>
+                    </div>
+                    <h2
+                        class="font-tech font-bold text-4xl text-white tracking-tight"
+                    >
+                        The Strategic Shift:<br />AVEVA E3D Integration
+                    </h2>
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Transitioning to a unified Information Management
+                        ecosystem yields complete baseline architectural
+                        control. Unlike standard Intergraph SMART engines, AVEVA
+                        creates customizable micro-databases matching the custom
+                        needs of the organization.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div
+                            class="p-4 bg-zinc-900/40 border border-zinc-800 rounded-lg"
+                        >
+                            <i
+                                class="fa-solid fa-diagram-project text-lime-brand mb-2 text-xl"
+                            ></i>
+                            <h4
+                                class="font-tech text-white font-medium text-sm mb-1"
+                            >
+                                Diagram Sync
+                            </h4>
+                            <p class="text-zinc-500 text-xs">
+                                Automated telemetry parity matching between P&ID
+                                schemes and core 3D geometry objects.
+                            </p>
+                        </div>
+                        <div
+                            class="p-4 bg-zinc-900/40 border border-zinc-800 rounded-lg"
+                        >
+                            <i
+                                class="fa-solid fa-cubes text-lime-brand mb-2 text-xl"
+                            ></i>
+                            <h4
+                                class="font-tech text-white font-medium text-sm mb-1"
+                            >
+                                Tekla Parity
+                            </h4>
+                            <p class="text-zinc-500 text-xs">
+                                Native import configuration pathways for complex
+                                structural frames directly into design matrix
+                                pipelines.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="w-full lg:w-1/2 h-64 lg:h-96 relative border border-zinc-800 rounded-xl overflow-hidden bg-zinc-950 flex items-center justify-center"
+                >
+                    <div
+                        class="absolute inset-0 bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20"
+                    ></div>
+                    <div class="z-10 text-center p-6 space-y-4">
+                        <div
+                            class="inline-flex items-center gap-2 bg-lime-brand/10 border border-lime-brand/20 px-3 py-1 rounded-full text-xs text-lime-brand font-mono"
+                        >
+                            <span
+                                class="w-2 h-2 rounded-full bg-lime-brand animate-ping"
+                            ></span>
+                            ARCHITECTURAL CORE ACTIVE
+                        </div>
+                        <p class="text-xs font-mono text-zinc-500 max-w-xs">
+                            AVEVA dynamic relational layout schema loaded
+                            successfully into memory block.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="slide-3"
+                class="slide-panel w-full h-full flex-col justify-center items-center max-w-4xl mx-auto px-4 text-center"
+            >
+                <span
+                    class="text-xs font-mono tracking-widest text-zinc-500 mb-6 uppercase"
+                    >03 // Architecture & Design Philosophy</span
+                >
+                <div
+                    class="relative py-8 px-6 bg-zinc-900/20 border border-zinc-800/60 rounded-2xl max-w-3xl backdrop-blur-md"
+                >
+                    <i
+                        class="fa-solid fa-quote-left text-zinc-800 text-6xl absolute -top-4 left-6 pointer-events-none"
+                    ></i>
+                    <blockquote
+                        class="font-tech font-bold text-3xl md:text-4xl text-white leading-tight mb-6 relative z-10 px-4"
+                    >
+                        "AVEVA behaves exactly like
+                        <span
+                            class="text-lime-brand underline decoration-wavy decoration-lime-brand/40"
+                            >iOS / iPhone</span
+                        >: proprietary unified data structures. SMART behaves
+                        like <span class="text-zinc-400">Android</span>: a
+                        generalized engine requiring external adjustments."
+                    </blockquote>
+                    <cite
+                        class="text-xs font-mono text-zinc-400 not-italic uppercase tracking-widest"
+                        >— Systems Infrastructure Review</cite
+                    >
+                </div>
+                <div class="flex items-center gap-12 mt-10 text-left">
+                    <div class="flex items-start gap-3">
+                        <div
+                            class="p-2 rounded bg-lime-brand/10 text-lime-brand text-lg"
+                        >
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <div>
+                            <h5 class="text-sm font-medium text-white">
+                                Custom High-Performance DB
+                            </h5>
+                            <p class="text-xs text-zinc-500 max-w-xs">
+                                Dynamic custom matrix built natively for massive
+                                parallel data processing loads.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="h-8 w-[1px] bg-zinc-800"></div>
+                    <div class="flex items-start gap-3">
+                        <div
+                            class="p-2 rounded bg-zinc-900 text-zinc-500 text-lg"
+                        >
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <div>
+                            <h5 class="text-sm font-medium text-zinc-400">
+                                Standard SQL Blocks
+                            </h5>
+                            <p class="text-xs text-zinc-600 max-w-xs">
+                                Traditional table configurations used by
+                                competitor packages creating scale caps.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="slide-4"
+                class="slide-panel w-full h-full flex-col lg:flex-row items-center gap-8 max-w-6xl mx-auto px-4 justify-center"
+            >
+                <div
+                    class="w-full lg:w-1/2 h-64 lg:h-96 bg-zinc-950 border border-zinc-800 rounded-xl relative overflow-hidden order-2 lg:order-1 flex items-center justify-center p-8"
+                >
+                    <div class="w-full space-y-3">
+                        <div
+                            class="flex items-center justify-between text-xs font-mono text-zinc-500 border-b border-zinc-900 pb-2"
+                        >
+                            <span>DATA PACKET INTAKE</span>
+                            <span class="text-lime-brand">COMPLIANT</span>
+                        </div>
+                        <div
+                            class="h-2 bg-zinc-900 rounded-full overflow-hidden"
+                        >
+                            <div
+                                class="h-full bg-lime-brand w-full rounded-full"
+                            ></div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 pt-2">
+                            <div
+                                class="bg-zinc-900/60 border border-zinc-800/80 p-3 rounded text-center"
+                            >
+                                <span
+                                    class="block text-xl font-bold font-tech text-white"
+                                    >100%</span
+                                >
+                                <span
+                                    class="text-[10px] text-zinc-500 font-mono uppercase"
+                                    >Attribute Sync</span
+                                >
+                            </div>
+                            <div
+                                class="bg-zinc-900/60 border border-zinc-800/80 p-3 rounded text-center"
+                            >
+                                <span
+                                    class="block text-xl font-bold font-tech text-white"
+                                    >0 ms</span
+                                >
+                                <span
+                                    class="text-[10px] text-zinc-500 font-mono uppercase"
+                                    >Latency</span
+                                >
+                            </div>
+                            <div
+                                class="bg-zinc-900/60 border border-zinc-800/80 p-3 rounded text-center"
+                            >
+                                <span
+                                    class="block text-xl font-bold font-tech text-lime-brand"
+                                    >Native</span
+                                >
+                                <span
+                                    class="text-[10px] text-zinc-500 font-mono uppercase"
+                                    >Tekla Load</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 space-y-6 order-1 lg:order-2">
+                    <div class="text-xs font-mono text-lime-brand">
+                        04 // ECOSYSTEM SYNERGY
+                    </div>
+                    <h2
+                        class="font-tech font-bold text-4xl text-white tracking-tight"
+                    >
+                        Ecosystem Synergy:<br />Tekla & Diagram Links
+                    </h2>
+                    <div class="space-y-4">
+                        <div
+                            class="p-4 bg-zinc-900/30 border-l-2 border-lime-brand rounded-r-lg"
+                        >
+                            <h4
+                                class="text-white font-medium text-sm mb-1 font-tech"
+                            >
+                                Tekla Structures Direct Pipeline
+                            </h4>
+                            <p class="text-zinc-400 text-xs leading-relaxed">
+                                Structural objects import flawlessly into the
+                                target array as local smart data elements,
+                                avoiding the third-party translation failures
+                                typical of old platforms.
+                            </p>
+                        </div>
+                        <div
+                            class="p-4 bg-zinc-900/30 border-l-2 border-zinc-700 rounded-r-lg"
+                        >
+                            <h4
+                                class="text-zinc-300 font-medium text-sm mb-1 font-tech"
+                            >
+                                AVEVA Diagrams Automation Matrix
+                            </h4>
+                            <p class="text-zinc-500 text-xs leading-relaxed">
+                                Piping classifications and engineering sheets
+                                instantly load variables parameters directly
+                                down to design layers without manual data
+                                manipulation cycles.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="slide-5"
+                class="slide-panel w-full h-full flex-col justify-center max-w-6xl mx-auto px-4"
+            >
+                <span class="text-xs font-mono text-lime-brand mb-2 block"
+                    >05 // ARCHITECTURAL FREEDOM</span
+                >
+                <h2
+                    class="font-tech font-bold text-4xl text-white tracking-tight mb-8"
+                >
+                    Platform Flexibility Standards
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div
+                        class="p-6 bg-zinc-900/20 border border-zinc-800 rounded-xl hover:border-lime-brand/30 transition-all group"
+                    >
+                        <div
+                            class="w-12 h-12 rounded-lg bg-zinc-900 flex items-center justify-center text-lime-brand text-xl mb-4 group-hover:bg-lime-brand group-hover:text-black transition-all"
+                        >
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h3 class="font-tech font-bold text-lg text-white mb-2">
+                            Modern Intuitive UI
+                        </h3>
+                        <p class="text-zinc-400 text-xs leading-relaxed">
+                            The application framework shares ergonomic
+                            conventions with MS Office suites, speeding up
+                            onboarding cycles across dynamic user segments.
+                        </p>
+                    </div>
+                    <div
+                        class="p-6 bg-zinc-900/20 border border-zinc-800 rounded-xl hover:border-lime-brand/30 transition-all group"
+                    >
+                        <div
+                            class="w-12 h-12 rounded-lg bg-zinc-900 flex items-center justify-center text-lime-brand text-xl mb-4 group-hover:bg-lime-brand group-hover:text-black transition-all"
+                        >
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3 class="font-tech font-bold text-lg text-white mb-2">
+                            PML Scripting Control
+                        </h3>
+                        <p class="text-zinc-400 text-xs leading-relaxed">
+                            Programmable Macro Language opens deep automation
+                            customization capabilities, ensuring team control
+                            without needing external engineering consultants.
+                        </p>
+                    </div>
+                    <div
+                        class="p-6 bg-zinc-900/20 border border-zinc-800 rounded-xl hover:border-lime-brand/30 transition-all group"
+                    >
+                        <div
+                            class="w-12 h-12 rounded-lg bg-zinc-900 flex items-center justify-center text-lime-brand text-xl mb-4 group-hover:bg-lime-brand group-hover:text-black transition-all"
+                        >
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="font-tech font-bold text-lg text-white mb-2">
+                            Operational Autonomy
+                        </h3>
+                        <p class="text-zinc-400 text-xs leading-relaxed">
+                            Dedicated internal databases ensure clean
+                            information tables and isolated engineering
+                            environments that perform beautifully without
+                            standard platform scale limits.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="slide-6"
+                class="slide-panel w-full h-full flex-col justify-center max-w-6xl mx-auto px-4"
+            >
+                <div
+                    class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-6"
+                >
+                    <div>
+                        <span
+                            class="text-xs font-mono text-lime-brand mb-1 block"
+                            >06 // CORPORATE RESOURCE AUDIT</span
+                        >
+                        <h2
+                            class="font-tech font-bold text-4xl text-white tracking-tight"
+                        >
+                            Department 3D Proficiency
+                        </h2>
+                    </div>
+                    <div
+                        class="flex items-center gap-1 bg-zinc-900 p-1 rounded-lg border border-zinc-800 text-xs font-mono"
+                    >
+                        <button
+                            class="bg-zinc-800 text-white px-3 py-1.5 rounded-md font-medium"
+                        >
+                            Matrix View
+                        </button>
+                        <button
+                            class="text-zinc-500 px-3 py-1.5 rounded-md hover:text-zinc-300 transition-colors cursor-not-allowed"
+                        >
+                            Delta Analytics
+                        </button>
+                    </div>
+                </div>
+                <div
+                    class="w-full overflow-x-auto border border-zinc-800/80 rounded-xl bg-zinc-950/40 backdrop-blur-sm"
+                >
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr
+                                class="bg-zinc-900/80 border-b border-zinc-800 font-mono text-zinc-400"
+                            >
+                                <th
+                                    class="p-4 font-medium uppercase tracking-wider"
+                                >
+                                    Department Class
+                                </th>
+                                <th
+                                    class="p-4 font-medium uppercase tracking-wider text-center"
+                                >
+                                    Staff (24)
+                                </th>
+                                <th
+                                    class="p-4 font-medium uppercase tracking-wider text-center"
+                                >
+                                    3D Level (24)
+                                </th>
+                                <th
+                                    class="p-4 font-medium uppercase tracking-wider text-center"
+                                >
+                                    Ratio (24)
+                                </th>
+                                <th
+                                    class="p-4 font-medium uppercase tracking-wider text-center text-lime-brand"
+                                >
+                                    Staff (26)
+                                </th>
+                                <th
+                                    class="p-4 font-medium uppercase tracking-wider text-center text-lime-brand"
+                                >
+                                    Target (26)
+                                </th>
+                                <th
+                                    class="p-4 font-medium uppercase tracking-wider text-right text-lime-brand"
+                                >
+                                    Ratio (26)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody
+                            class="divide-y divide-zinc-900 text-zinc-300 font-medium"
+                        >
+                            <tr class="hover:bg-zinc-900/30 transition-colors">
+                                <td class="p-4 text-white font-tech">
+                                    MTO (Procurement Array)
+                                </td>
+                                <td class="p-4 text-center text-zinc-500">
+                                    14
+                                </td>
+                                <td class="p-4 text-center text-zinc-500">5</td>
+                                <td class="p-4 text-center">
+                                    <span
+                                        class="px-2 py-0.5 bg-zinc-900 rounded text-zinc-400"
+                                        >36%</span
+                                    >
+                                </td>
+                                <td class="p-4 text-center text-white">7</td>
+                                <td class="p-4 text-center text-white">7</td>
+                                <td class="p-4 text-right">
+                                    <span
+                                        class="px-2 py-0.5 bg-lime-brand/10 border border-lime-brand/20 rounded text-lime-brand"
+                                        >100%</span
+                                    >
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-zinc-900/30 transition-colors">
+                                <td class="p-4 text-white font-tech">
+                                    SanO (Sanitary Grid)
+                                </td>
+                                <td class="p-4 text-center text-zinc-500">
+                                    12
+                                </td>
+                                <td class="p-4 text-center text-zinc-500">3</td>
+                                <td class="p-4 text-center">
+                                    <span
+                                        class="px-2 py-0.5 bg-zinc-900 rounded text-zinc-400"
+                                        >25%</span
+                                    >
+                                </td>
+                                <td class="p-4 text-center text-white">6</td>
+                                <td class="p-4 text-center text-white">3</td>
+                                <td class="p-4 text-right">
+                                    <span
+                                        class="px-2 py-0.5 bg-lime-brand/10 border border-lime-brand/20 rounded text-lime-brand"
+                                        >67%</span
+                                    >
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-zinc-900/30 transition-colors">
+                                <td class="p-4 text-white font-tech">
+                                    OA (Architecture Suite)
+                                </td>
+                                <td class="p-4 text-center text-zinc-500">
+                                    17
+                                </td>
+                                <td class="p-4 text-center text-zinc-500">3</td>
+                                <td class="p-4 text-center">
+                                    <span
+                                        class="px-2 py-0.5 bg-zinc-900 rounded text-zinc-400"
+                                        >18%</span
+                                    >
+                                </td>
+                                <td class="p-4 text-center text-white">11</td>
+                                <td class="p-4 text-center text-white">4</td>
+                                <td class="p-4 text-right">
+                                    <span
+                                        class="px-2 py-0.5 bg-zinc-800 rounded text-zinc-400"
+                                        >36%</span
+                                    >
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-zinc-900/30 transition-colors">
+                                <td class="p-4 text-white font-tech">
+                                    NPO (Process Layout)
+                                </td>
+                                <td class="p-4 text-center text-zinc-500">
+                                    17
+                                </td>
+                                <td class="p-4 text-center text-zinc-500">1</td>
+                                <td class="p-4 text-center">
+                                    <span
+                                        class="px-2 py-0.5 bg-zinc-900 rounded text-zinc-500"
+                                        >6%</span
+                                    >
+                                </td>
+                                <td class="p-4 text-center text-white">12</td>
+                                <td class="p-4 text-center text-white">2</td>
+                                <td class="p-4 text-right">
+                                    <span
+                                        class="px-2 py-0.5 bg-zinc-800 rounded text-zinc-400"
+                                        >16%</span
+                                    >
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-zinc-900/30 transition-colors">
+                                <td class="p-4 text-white font-tech">
+                                    ETO (Electrical Network)
+                                </td>
+                                <td class="p-4 text-center text-zinc-500">
+                                    17
+                                </td>
+                                <td class="p-4 text-center text-zinc-500">3</td>
+                                <td class="p-4 text-center">
+                                    <span
+                                        class="px-2 py-0.5 bg-zinc-900 rounded text-zinc-400"
+                                        >18%</span
+                                    >
+                                </td>
+                                <td class="p-4 text-center text-white">12</td>
+                                <td class="p-4 text-center text-white">4</td>
+                                <td class="p-4 text-right">
+                                    <span
+                                        class="px-2 py-0.5 bg-zinc-800 rounded text-zinc-400"
+                                        >33%</span
+                                    >
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div
+                id="slide-7"
+                class="slide-panel w-full h-full flex-col justify-center max-w-4xl mx-auto px-4"
+            >
+                <span class="text-xs font-mono text-lime-brand mb-2 block"
+                    >07 // PORTFOLIO CAPACITY INDEX</span
+                >
+                <h2
+                    class="font-tech font-bold text-4xl text-white tracking-tight mb-8"
+                >
+                    Active 3D Portfolio Scaling
+                </h2>
+
+                <div class="space-y-6">
+                    <div class="space-y-2">
+                        <div
+                            class="flex justify-between items-end text-xs font-mono"
+                        >
+                            <span class="text-zinc-400"
+                                >INTERGRAPH SMART PORTFOLIO (2024 Base)</span
+                            >
+                            <span class="text-white font-bold"
+                                >1,406 UNITS</span
+                            >
+                        </div>
+                        <div
+                            class="h-6 bg-zinc-900/60 border border-zinc-800 rounded-md overflow-hidden relative flex items-center px-3"
+                        >
+                            <div
+                                class="absolute inset-y-0 left-0 bg-zinc-800 w-[45%] rounded-r"
+                            ></div>
+                            <span
+                                class="z-10 text-[10px] font-mono text-zinc-400"
+                                >Legacy Architecture Volume</span
+                            >
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div
+                            class="flex justify-between items-end text-xs font-mono"
+                        >
+                            <span class="text-zinc-400"
+                                >AVEVA PRODUCTION TRACK (2024 Baseline)</span
+                            >
+                            <span class="text-white font-bold"
+                                >1,476 UNITS</span
+                            >
+                        </div>
+                        <div
+                            class="h-6 bg-zinc-900/60 border border-zinc-800 rounded-md overflow-hidden relative flex items-center px-3"
+                        >
+                            <div
+                                class="absolute inset-y-0 left-0 bg-zinc-700 w-[48%] rounded-r"
+                            ></div>
+                            <span
+                                class="z-10 text-[10px] font-mono text-zinc-300"
+                                >Initial Integration Footprint</span
+                            >
+                        </div>
+                    </div>
+
+                    <div
+                        class="py-2 border-b border-dashed border-zinc-800"
+                    ></div>
+
+                    <div class="space-y-2">
+                        <div
+                            class="flex justify-between items-end text-xs font-mono"
+                        >
+                            <span class="text-lime-brand font-bold"
+                                >AVEVA CONSOLIDATED SYSTEM TARGET (2026
+                                Core)</span
+                            >
+                            <span class="text-lime-brand font-bold"
+                                >EXPANDED PLATFORM PORTFOLIO (1,500+)</span
+                            >
+                        </div>
+                        <div
+                            class="h-8 bg-zinc-900/30 border border-lime-brand/30 rounded-md overflow-hidden relative flex items-center px-3 neon-glow-lime"
+                        >
+                            <div
+                                class="absolute inset-y-0 left-0 bg-lime-brand w-[92%] rounded-r"
+                            ></div>
+                            <span
+                                class="z-10 text-xs font-mono font-bold text-black uppercase"
+                                >Strategic Focus Areas: Cluster Sites + CPS
+                                Projects 1490, 1495, 1499</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="slide-8"
+                class="slide-panel w-full h-full flex-col lg:flex-row items-center gap-12 max-w-6xl mx-auto px-4 justify-center"
+            >
+                <div class="w-full lg:w-2/5 space-y-4">
+                    <span class="text-xs font-mono text-lime-brand block"
+                        >08 // RESOURCE OPTIMIZATION</span
+                    >
+                    <h2
+                        class="font-tech font-bold text-4xl text-white tracking-tight"
+                    >
+                        Reducing Training Expenditures
+                    </h2>
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        By developing an internal corporate learning framework,
+                        we eliminate dependencies on third-party vendor training
+                        agreements, keeping design architecture knowledge
+                        securely inside the company.
+                    </p>
+                    <div
+                        class="p-4 bg-zinc-900/40 border border-zinc-800 rounded-lg flex items-center gap-3"
+                    >
+                        <div
+                            class="w-2 h-2 rounded-full bg-lime-brand animate-ping"
+                        ></div>
+                        <span class="text-xs font-mono text-zinc-300"
+                            >Internal Portal deployment pipeline active.</span
+                        >
+                    </div>
+                </div>
+                <div
+                    class="w-full lg:w-3/5 grid grid-cols-1 sm:grid-cols-2 gap-6"
+                >
+                    <div
+                        class="p-6 bg-zinc-900/20 border border-zinc-800 rounded-xl flex flex-col justify-between"
+                    >
+                        <span class="text-xs font-mono text-zinc-500 uppercase"
+                            >2024 Vendor Expense Baseline</span
+                        >
+                        <div class="my-4">
+                            <span
+                                class="font-tech font-bold text-5xl text-white"
+                                >2.18M</span
+                            >
+                            <span
+                                class="text-xs text-zinc-400 font-mono block mt-1"
+                                >RUB OUTFLOW CERTIFIED</span
+                            >
+                        </div>
+                        <p class="text-zinc-500 text-xs">
+                            External technical software validation training
+                            expenditures map.
+                        </p>
+                    </div>
+                    <div
+                        class="p-6 bg-zinc-900/30 border-2 border-lime-brand rounded-xl flex flex-col justify-between relative overflow-hidden shadow-[0_0_40px_rgba(198,255,0,0.05)]"
+                    >
+                        <div
+                            class="absolute -right-4 -bottom-4 text-lime-brand/5 text-9xl font-tech font-bold pointer-events-none"
+                        >
+                            0
+                        </div>
+                        <span
+                            class="text-xs font-mono text-lime-brand uppercase tracking-wider"
+                            >2026 Target Projections</span
+                        >
+                        <div class="my-4">
+                            <span
+                                class="font-tech font-bold text-6xl text-lime-brand"
+                                >0.00</span
+                            >
+                            <span
+                                class="text-xs text-lime-brand font-mono block mt-1"
+                                >RUB TOTAL EXPENDITURE</span
+                            >
+                        </div>
+                        <p class="text-zinc-300 text-xs">
+                            Full self-sustained digital learning infrastructure
+                            parity path.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="slide-9"
+                class="slide-panel w-full h-full flex-col justify-center max-w-5xl mx-auto px-4"
+            >
+                <span class="text-xs font-mono text-lime-brand mb-2 block"
+                    >09 // INFRASTRUCTURE DELIVERY</span
+                >
+                <h2
+                    class="font-tech font-bold text-4xl text-white tracking-tight mb-8"
+                >
+                    Democratizing 3D Model Access
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div
+                        class="p-6 bg-zinc-950/60 border border-zinc-900 rounded-xl space-y-4"
+                    >
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-zinc-500"
+                                >2024 DEPLOYMENT PROCESS</span
+                            >
+                            <span
+                                class="text-xs bg-zinc-900 px-2 py-0.5 text-zinc-400 rounded"
+                                >RESTRICTED</span
+                            >
+                        </div>
+                        <h3 class="font-tech font-bold text-xl text-zinc-300">
+                            Manual Navisworks Export Cycles
+                        </h3>
+                        <p class="text-zinc-500 text-xs leading-relaxed">
+                            Data structures were compiled manually only twice
+                            per calendar week, creating coordination bottlenecks
+                            and technical tracking latency across external site
+                            management offices.
+                        </p>
+                        <div class="h-[2px] bg-zinc-900 w-full"></div>
+                        <div
+                            class="flex items-center gap-2 text-zinc-500 text-xs font-mono"
+                        >
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <span>Data latency window up to 72 hours.</span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="p-6 bg-zinc-900/30 border border-lime-brand/40 rounded-xl space-y-4 shadow-[0_0_30px_rgba(198,255,0,0.02)]"
+                    >
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-lime-brand"
+                                >2026 ROADMAP DESIGN</span
+                            >
+                            <span
+                                class="text-xs bg-lime-brand/10 px-2 py-0.5 text-lime-brand rounded border border-lime-brand/20"
+                                >AUTOMATED</span
+                            >
+                        </div>
+                        <h3 class="font-tech font-bold text-xl text-white">
+                            Daily Automated System Syncs
+                        </h3>
+                        <p class="text-zinc-300 text-xs leading-relaxed">
+                            Automated script daemons compile and export unified
+                            model arrays every night directly down to shared
+                            project access layers, ensuring clean verification
+                            loops.
+                        </p>
+                        <div class="h-[2px] bg-zinc-800/80 w-full"></div>
+                        <div
+                            class="flex items-center gap-2 text-lime-brand text-xs font-mono"
+                        >
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span
+                                >Immediate telemetry verification access
+                                globally.</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="slide-10"
+                class="slide-panel w-full h-full flex-col justify-center max-w-6xl mx-auto px-4"
+            >
+                <span class="text-xs font-mono text-lime-brand mb-2 block"
+                    >10 // QUALITY ASSURANCE STANDARDS</span
+                >
+                <h2
+                    class="font-tech font-bold text-4xl text-white tracking-tight mb-8"
+                >
+                    Engineering Model Optimization
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div
+                        class="p-5 bg-zinc-900/40 border border-zinc-800/80 rounded-xl"
+                    >
+                        <span
+                            class="font-tech font-bold text-xs text-lime-brand tracking-wider block mb-2"
+                            >PHASE 01 // CATALOG STABILIZATION</span
+                        >
+                        <h4 class="text-white text-base font-medium mb-2">
+                            Standardized Master Components
+                        </h4>
+                        <p class="text-zinc-400 text-xs leading-relaxed">
+                            Building a single database for standardized
+                            corporate equipment configurations, complete with
+                            pre-configured parametric adjustments.
+                        </p>
+                    </div>
+                    <div
+                        class="p-5 bg-zinc-900/40 border border-zinc-800/80 rounded-xl"
+                    >
+                        <span
+                            class="font-tech font-bold text-xs text-lime-brand tracking-wider block mb-2"
+                            >PHASE 02 // REGULATORY BLUEPRINTS</span
+                        >
+                        <h4 class="text-white text-base font-medium mb-2">
+                            Internal Framework Regulations
+                        </h4>
+                        <p class="text-zinc-400 text-xs leading-relaxed">
+                            Publishing modern technical documents that define
+                            exactly how 3D design components must be organized
+                            and structured.
+                        </p>
+                    </div>
+                    <div
+                        class="p-5 bg-zinc-900/40 border border-zinc-800/80 rounded-xl"
+                    >
+                        <span
+                            class="font-tech font-bold text-xs text-lime-brand tracking-wider block mb-2"
+                            >PHASE 03 // COMPLIANCE PARITY</span
+                        >
+                        <h4 class="text-white text-base font-medium mb-2">
+                            GOST Standardization Checkpoints
+                        </h4>
+                        <p class="text-zinc-400 text-xs leading-relaxed">
+                            Enforcing automated validation scripts to confirm
+                            full compliance with Russian State Engineering
+                            Standards across all model layers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="slide-11"
+                class="slide-panel w-full h-full flex-col justify-center max-w-6xl mx-auto px-4"
+            >
+                <span class="text-xs font-mono text-lime-brand mb-2 block"
+                    >11 // PIPELINE OPTIMIZATION AUDIT</span
+                >
+                <h2
+                    class="font-tech font-bold text-4xl text-white tracking-tight mb-6"
+                >
+                    AVEVA Catalog Evolution
+                </h2>
+                <div
+                    class="w-full overflow-hidden border border-zinc-800 rounded-xl bg-zinc-950/60 font-mono text-xs"
+                >
+                    <div
+                        class="grid grid-cols-3 bg-zinc-900 p-4 font-bold text-zinc-400 border-b border-zinc-800"
+                    >
+                        <div>CONTROL VARIABLE</div>
+                        <div>2024 DEPLOYMENT PROFILE</div>
+                        <div class="text-lime-brand">
+                            2026 STRATEGIC TARGET PROFILE
+                        </div>
+                    </div>
+                    <div class="divide-y divide-zinc-900/80 text-zinc-300">
+                        <div class="grid grid-cols-3 p-4 items-center">
+                            <div class="font-tech font-bold text-white text-sm">
+                                Class Structure Controls
+                            </div>
+                            <div class="text-zinc-500">
+                                Uncontrolled changes logged inside local Google
+                                Sheets files.
+                            </div>
+                            <div
+                                class="text-zinc-300 bg-lime-brand/5 border border-lime-brand/10 p-2 rounded"
+                            >
+                                Strict verification templates owned by internal
+                                CAD management team.
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 p-4 items-center">
+                            <div class="font-tech font-bold text-white text-sm">
+                                GOST Standards Parity
+                            </div>
+                            <div class="text-zinc-500">
+                                Components occasionally built with incorrect
+                                custom dimensions.
+                            </div>
+                            <div
+                                class="text-zinc-300 bg-lime-brand/5 border border-lime-brand/10 p-2 rounded"
+                            >
+                                Mandatory systematic checks with automated
+                                engineering error messaging.
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 p-4 items-center">
+                            <div class="font-tech font-bold text-white text-sm">
+                                Part Identifier Schemas
+                            </div>
+                            <div class="text-zinc-500">
+                                Unstructured component name lists causing
+                                selection lag.
+                            </div>
+                            <div
+                                class="text-zinc-300 bg-lime-brand/5 border border-lime-brand/10 p-2 rounded"
+                            >
+                                Coded naming patterns driving smart logic
+                                categorization rules.
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 p-4 items-center">
+                            <div class="font-tech font-bold text-white text-sm">
+                                Fastener Tracking Arrays
+                            </div>
+                            <div class="text-zinc-500">
+                                Omitted from initial 3D layers; added manually
+                                during calculation checks.
+                            </div>
+                            <div
+                                class="text-lime-brand font-medium bg-lime-brand/10 border border-lime-brand/20 p-2 rounded"
+                            >
+                                Full 3D modeling inclusion for instant
+                                extraction directly to MTO pipelines.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="slide-12"
+                class="slide-panel w-full h-full flex-col justify-center items-center max-w-4xl mx-auto px-4 text-center relative"
+            >
+                <div
+                    class="absolute w-72 h-72 bg-lime-brand/5 rounded-full blur-[100px] pointer-events-none"
+                ></div>
+                <span
+                    class="text-xs font-mono tracking-[0.4em] text-lime-brand mb-4 block uppercase"
+                    >CORE FRAMEWORK MISSION COMPLETE</span
+                >
+                <h1
+                    class="font-tech font-bold text-6xl md:text-8xl tracking-tight text-white mb-4"
+                >
+                    QUESTIONS<span class="text-lime-brand">?</span>
+                </h1>
+                <p
+                    class="text-zinc-400 font-light text-base max-w-md mx-auto leading-relaxed mb-8"
+                >
+                    Building a unified digital design architecture for the
+                    engineering lifecycle of ООО ЮНГП.
+                </p>
+                <div
+                    class="inline-flex flex-col sm:flex-row items-center gap-4 bg-zinc-900/60 border border-zinc-800 p-3 rounded-xl font-mono text-xs"
+                >
+                    <div
+                        class="flex items-center gap-2 px-3 py-1.5 text-zinc-400"
+                    >
+                        <i class="fa-solid fa-microchip text-lime-brand"></i>
+                        <span>SYSTEM CONTROL: STABLE</span>
+                    </div>
+                    <div class="hidden sm:block h-4 w-[1px] bg-zinc-800"></div>
+                    <button
+                        onclick="resetPresentation()"
+                        class="bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-1.5 rounded-md font-medium transition-colors cursor-pointer"
+                    >
+                        <i class="fa-solid fa-rotate-left mr-1"></i> RESTART
+                        PRESENTATION
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer
+            class="w-full flex flex-col sm:flex-row items-center justify-between border-t border-zinc-800/60 pt-4 z-50 gap-4"
+        >
+            <div class="flex items-center gap-2">
+                <div
+                    class="bg-zinc-900 border border-zinc-800 text-zinc-400 font-mono px-3 py-1 rounded text-xs"
+                >
+                    NODE:
+                    <span id="current-slide-badge" class="text-white font-bold"
+                        >01</span
+                    >
+                    / 12
+                </div>
+                <div
+                    class="text-[11px] font-mono text-zinc-500 uppercase tracking-wider hidden md:inline"
+                >
+                    ООО ЮНГП // Engineering Platform Transformation
+                </div>
+            </div>
+
+            <div
+                class="flex-1 max-w-md mx-4 h-1 bg-zinc-900 rounded-full overflow-hidden hidden sm:block"
+            >
+                <div
+                    id="presentation-progress-bar"
+                    class="h-full bg-lime-brand transition-all duration-300 w-[8.33%] shadow-[0_0_10px_rgba(198,255,0,0.4)]"
+                ></div>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <button
+                    onclick="prevSlide()"
+                    class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 hover:bg-zinc-800/40 transition-all flex items-center justify-center cursor-pointer"
+                >
+                    <i class="fa-solid fa-chevron-left text-xs"></i>
+                </button>
+                <button
+                    onclick="nextSlide()"
+                    class="w-24 h-10 rounded-lg bg-zinc-900 border border-zinc-800 text-white font-tech font-bold text-xs tracking-wider hover:bg-lime-brand hover:text-black hover:border-lime-brand transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+                >
+                    NEXT <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </button>
+            </div>
+        </footer>
+
+        <script>
+            let currentSlide = 1;
+            const totalSlides = 12;
+
+            function updateSlideDisplay() {
+                for (let i = 1; i <= totalSlides; i++) {
+                    const el = document.getElementById(`slide-${i}`);
+                    if (el) {
+                        el.classList.remove("active");
+                    }
+                }
+
+                const activeSlide = document.getElementById(
+                    `slide-${currentSlide}`,
+                );
+                if (activeSlide) {
+                    activeSlide.classList.add("active");
+                }
+
+                document.getElementById("current-slide-badge").innerText =
+                    currentSlide.toString().padStart(2, "0");
+                const progressPercentage = (currentSlide / totalSlides) * 100;
+                document.getElementById(
+                    "presentation-progress-bar",
+                ).style.width = `${progressPercentage}%`;
+            }
+
+            function nextSlide() {
+                if (currentSlide < totalSlides) {
+                    currentSlide++;
+                    updateSlideDisplay();
+                }
+            }
+
+            function prevSlide() {
+                if (currentSlide > 1) {
+                    currentSlide--;
+                    updateSlideDisplay();
+                }
+            }
+
+            function resetPresentation() {
+                currentSlide = 1;
+                updateSlideDisplay();
+            }
+
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "ArrowRight" || e.key === "Space") {
+                    e.preventDefault();
+                    nextSlide();
+                } else if (e.key === "ArrowLeft") {
+                    e.preventDefault();
+                    prevSlide();
+                }
+            });
+
+            function toggleFullscreen() {
+                if (!document.fullscreenElement) {
+                    document.documentElement
+                        .requestFullscreen()
+                        .catch((err) => {
+                            console.error(
+                                `Error attempting to enable fullscreen: ${err.message}`,
+                            );
+                        });
+                } else {
+                    document.exitFullscreen();
+                }
+            }
+        </script>
+    </body>
+</html>
