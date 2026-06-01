@@ -240,7 +240,7 @@ export default function DreamZinePresentation() {
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10 pointer-events-none" />
                 <div className="absolute inset-0 w-full h-full flex items-center justify-center p-2 bg-zinc-950/40">
                   <img
-                    src={`/animation/frame_${currentFrame}.${IMAGE_EXTENSION}`}
+                    src={`${import.meta.env.BASE_URL}animation/frame_${currentFrame}.${IMAGE_EXTENSION}`}
                     alt={`Поток: ${currentFrame}`}
                     className="w-full h-full object-contain filter contrast-125 transition-all duration-75"
                     onError={(e) => {
