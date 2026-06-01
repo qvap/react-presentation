@@ -9,8 +9,9 @@ const METADATA = {
 };
 
 // --- НАСТРОЙКИ АНИМАЦИИ КАДРОВ ---
-const TOTAL_FRAMES = 18;
-const IMAGE_EXTENSION = "jpg";
+const TOTAL_FRAMES = 44;
+const IMAGE_EXTENSION = "JPG";
+const FRAME_INTERVAL_MS = 360;
 
 const SLIDES = [
   { id: "01", tag: "СТРАТЕГИЧЕСКАЯ ЭКОСИСТЕМА", title: "ТИТУЛЬНЫЙ" },
@@ -28,7 +29,8 @@ const SLIDES = [
   { id: "09", tag: "ИНФРАСТРУКТУРА ПОСТАВКИ", title: "ДОСТУП К 3D МОДЕЛЯМ" },
   { id: "10", tag: "ОБЕСПЕЧЕНИЕ КАЧЕСТВА", title: "ОПТИМИЗАЦИЯ МОДЕЛЕЙ" },
   { id: "11", tag: "АУДИТ КОНВЕЙЕРА", title: "ЭВОЛЮЦИЯ КАТАЛОГА" },
-  { id: "12", tag: "МИССИЯ ЗАВЕРШЕНА", title: "ВОПРОСЫ И ОТВЕТЫ" },
+  { id: "12", tag: "КОМАНДА ДРИМ", title: "СТРУКТУРА ДРИМ" },
+  { id: "13", tag: "МИССИЯ ЗАВЕРШЕНА", title: "ВОПРОСЫ И ОТВЕТЫ" },
 ];
 
 export default function DreamZinePresentation() {
@@ -70,7 +72,7 @@ export default function DreamZinePresentation() {
   useEffect(() => {
     const frameInterval = setInterval(() => {
       setCurrentFrame((prevFrame) => (prevFrame + 1) % TOTAL_FRAMES);
-    }, 120);
+    }, FRAME_INTERVAL_MS);
     return () => clearInterval(frameInterval);
   }, []);
 
@@ -198,35 +200,37 @@ export default function DreamZinePresentation() {
                   <span>02 / ТЕХНИЧЕСКОЕ ПРЕИМУЩЕСТВО</span>
                 </div>
                 <h2 className="text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
-                  The Strategic Shift:
+                  Преимущества AVEVA
                   <br />
-                  AVEVA E3D Integration
+                  перед SMART Plant
                 </h2>
                 <p className="text-zinc-400 text-base lg:text-lg leading-relaxed">
-                  Transitioning to a unified Information Management ecosystem
-                  yields complete baseline architectural control. Unlike
-                  standard Intergraph SMART engines, AVEVA creates customizable
-                  micro-databases matching the custom needs of the organization.
+                  Единая экосистема управления информацией с полным контролем
+                  архитектуры. В отличие от SMART, AVEVA позволяет создавать
+                  настраиваемые базы данных под специфические требования
+                  организации.
                 </p>
                 <div className="grid grid-cols-2 gap-6 pt-2">
                   <div className="p-5 bg-zinc-900/40 border border-zinc-800 rounded-lg">
                     <i className="fa-solid fa-diagram-project text-[#c6ff00] mb-3 text-2xl block" />
                     <h4 className="text-white font-medium text-base mb-2">
-                      Diagram Sync
+                      P&ID → 3D автоматически
                     </h4>
                     <p className="text-zinc-500 text-sm leading-relaxed">
-                      Automated telemetry parity matching between P&ID schemes
-                      and core 3D geometry objects.
+                      Атрибуты оборудования и трубопроводов из AVEVA Diagrams
+                      автоматически передаются в 3D-геометрию E3D и
+                      документацию.
                     </p>
                   </div>
                   <div className="p-5 bg-zinc-900/40 border border-zinc-800 rounded-lg">
                     <i className="fa-solid fa-cubes text-[#c6ff00] mb-3 text-2xl block" />
                     <h4 className="text-white font-medium text-base mb-2">
-                      Tekla Parity
+                      Нативная интеграция Tekla
                     </h4>
                     <p className="text-zinc-500 text-sm leading-relaxed">
-                      Native import configuration pathways for complex
-                      structural frames directly into design matrix pipelines.
+                      Строительные конструкции Tekla Structures воспринимаются
+                      «родными» элементами AVEVA — с идентификацией профиля,
+                      замерами и атрибутами.
                     </p>
                   </div>
                 </div>
@@ -258,13 +262,13 @@ export default function DreamZinePresentation() {
                   <span className="text-[#c6ff00] font-bold tracking-widest animate-pulse">
                     ● ОСНОВНОЙ ПОТОК АКТИВЕН
                   </span>
-                  <span>FPS // ~8</span>
+                  <span>{Math.round(1000 / FRAME_INTERVAL_MS)} FPS</span>
                 </div>
                 <div className="z-10 flex justify-between items-center w-full font-mono text-xs text-zinc-400 bg-gradient-to-t from-zinc-950 to-transparent p-2 mt-auto">
                   <span className="text-white font-bold">
                     КАДР: {currentFrame + 1}/{TOTAL_FRAMES}
                   </span>
-                  <span className="text-zinc-500">ID_CORE_MATRIX_2026</span>
+                  <span className="text-zinc-500">AVEVA_2026</span>
                 </div>
               </div>
             </div>
@@ -278,9 +282,9 @@ export default function DreamZinePresentation() {
               </span>
               <div className="relative py-12 px-8 bg-zinc-900/20 border border-zinc-800/60 rounded-2xl max-w-4xl backdrop-blur-md">
                 <i className="fa-solid fa-quote-left text-zinc-800 text-6xl absolute -top-5 left-6 pointer-events-none" />
-                <blockquote className="text-3xl md:text-5xl font-bold text-white leading-tight mb-8 relative z-10 px-6">
-                  "AVEVA работает точно как{" "}
-                  <span className="text-[#c6ff00] underline decoration-wavy decoration-[#c6ff00]/40">
+                <blockquote className="text-3xl md:text-4xl font-bold text-white leading-tight mb-8 relative z-10 px-6">
+                  "AVEVA работает как{" "}
+                  <span className="text-[#c6ff00] decoration-[#c6ff00]/40">
                     iOS / iPhone
                   </span>
                   : проприетарные единые структуры данных. SMART работает как{" "}
@@ -467,7 +471,7 @@ export default function DreamZinePresentation() {
                 </div>
                 <div className="flex items-center gap-1 bg-zinc-900 p-1.5 rounded-lg border border-zinc-800 font-mono text-xs">
                   <span className="bg-zinc-800 text-white px-3 py-1.5 rounded">
-                    Матричный вид
+                    Табличный вид
                   </span>
                 </div>
               </div>
@@ -526,8 +530,8 @@ export default function DreamZinePresentation() {
                         l24: 3,
                         r24: "18%",
                         s26: 11,
-                        t26: 4,
-                        r26: "36%",
+                        t26: 5,
+                        r26: "45%",
                         premium: false,
                       },
                       {
@@ -566,8 +570,8 @@ export default function DreamZinePresentation() {
                         l24: 6,
                         r24: "33%",
                         s26: 19,
-                        t26: "??",
-                        r26: "—",
+                        t26: 9,
+                        r26: "47%",
                         premium: false,
                       },
                     ].map((row, index) => (
@@ -626,7 +630,7 @@ export default function DreamZinePresentation() {
                       Портфель INTERGRAPH SMART (база 2024)
                     </span>
                     <span className="text-white font-bold text-lg">
-                      1 406 ЕД.
+                      1 406 УПН
                     </span>
                   </div>
                   <div className="h-8 bg-zinc-900/60 border border-zinc-800 rounded-md overflow-hidden relative flex items-center px-4">
@@ -642,7 +646,7 @@ export default function DreamZinePresentation() {
                       Трасса AVEVA Production (базовая линия 2024)
                     </span>
                     <span className="text-white font-bold text-lg">
-                      1 476 ЕД.
+                      1 476 БХК
                     </span>
                   </div>
                   <div className="h-8 bg-zinc-900/60 border border-zinc-800 rounded-md overflow-hidden relative flex items-center px-4">
@@ -656,18 +660,41 @@ export default function DreamZinePresentation() {
                 <div className="space-y-2">
                   <div className="flex justify-between items-end text-sm font-mono">
                     <span className="text-[#c6ff00] font-bold">
-                      Целевая AVEVA (ядро 2026)
+                      Активный портфель AVEVA (2026)
                     </span>
                     <span className="text-[#c6ff00] font-bold text-lg">
-                      РАСШИРЕННЫЙ ПОРТФЕЛЬ (1 500+)
+                      7 ПРОЕКТОВ
                     </span>
                   </div>
                   <div className="h-10 bg-zinc-900/30 border border-[#c6ff00]/30 rounded-md overflow-hidden relative flex items-center px-4 shadow-[0_0_20px_rgba(198,255,0,0.1)]">
-                    <div className="absolute inset-y-0 left-0 bg-[#c6ff00] w-[92%] rounded-r" />
-                    <span className="z-10 text-sm font-mono font-bold text-black uppercase">
-                      Стратегический фокус: кластерные площадки + CPS 1490,
-                      1495, 1499
+                    <div className="absolute inset-y-0 left-0 bg-[#c6ff00] w-full rounded-r" />
+                    <span className="z-10 text-xs font-mono font-bold text-black uppercase">
+                      100% переход на AVEVA
                     </span>
+                  </div>
+                  <div className="grid grid-cols-1 gap-1.5 pt-2 font-mono text-xs">
+                    {[
+                      { id: "1476", name: "БХК" },
+                      { id: "1406.1", name: "УПН — Перепроектирование" },
+                      { id: "1509", name: "Компрессорная станция" },
+                      { id: "1537", name: "Куст №17 Славнефть" },
+                      {
+                        id: "1490",
+                        name: "Энергокомплекс на Лаявожском месторождении",
+                      },
+                      { id: "1495", name: "Кустовые площадки ЛВНГ и ЦПС" },
+                      { id: "1499", name: "Пункт сдачи-приема ЛВНГ" },
+                    ].map((p) => (
+                      <div
+                        key={p.id}
+                        className="flex items-center gap-3 text-zinc-400"
+                      >
+                        <span className="text-[#c6ff00] w-14 shrink-0">
+                          {p.id}
+                        </span>
+                        <span>{p.name}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -697,37 +724,48 @@ export default function DreamZinePresentation() {
                   </span>
                 </div>
               </div>
-              <div className="w-full lg:w-3/5 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="w-full lg:w-3/5 grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="p-6 bg-zinc-900/20 border border-zinc-800 rounded-xl flex flex-col justify-between min-h-[180px]">
                   <span className="text-xs font-mono text-zinc-500 uppercase">
-                    Базовый уровень расходов вендора за 2024
+                    Расходы вендора 2024
                   </span>
                   <div className="my-4">
-                    <span className="font-bold text-5xl text-white">2.18M</span>
+                    <span className="font-bold text-4xl text-white">2.18M</span>
                     <span className="text-xs text-zinc-400 font-mono block mt-1">
-                      ПОДТВЕРЖДЕННЫЙ ОТТОК РУБ.
+                      РУБ.
                     </span>
                   </div>
                   <p className="text-zinc-500 text-xs">
-                    Карта расходов на внешнее обучение по валидации технического
-                    ПО.
+                    Внешнее обучение по валидации технического ПО.
+                  </p>
+                </div>
+                <div className="p-6 bg-zinc-900/20 border border-zinc-800 rounded-xl flex flex-col justify-between min-h-[180px]">
+                  <span className="text-xs font-mono text-zinc-500 uppercase">
+                    Расходы 2025
+                  </span>
+                  <div className="my-4">
+                    <span className="font-bold text-4xl text-white">190K</span>
+                    <span className="text-xs text-zinc-400 font-mono block mt-1">
+                      РУБ.
+                    </span>
+                  </div>
+                  <p className="text-zinc-500 text-xs">
+                    Переход к внутреннему обучению.
                   </p>
                 </div>
                 <div className="p-6 bg-zinc-900/30 border-2 border-[#c6ff00] rounded-xl flex flex-col justify-between min-h-[180px] relative overflow-hidden shadow-[0_0_30px_rgba(198,255,0,0.04)]">
                   <span className="text-xs font-mono text-[#c6ff00] uppercase tracking-wider">
-                    Прогноз цели на 2026
+                    Цель 2026
                   </span>
                   <div className="my-4">
-                    <span className="font-bold text-6xl md:text-7xl text-[#c6ff00]">
-                      0.00
-                    </span>
+                    <span className="font-bold text-5xl text-[#c6ff00]">0</span>
                     <span className="text-xs text-[#c6ff00] font-mono block mt-1">
-                      ОБЩИЕ РАСХОДЫ РУБ.
+                      РУБ.
                     </span>
                   </div>
                   <p className="text-zinc-300 text-xs">
-                    Путь к полностью самодостаточной цифровой инфраструктуре
-                    обучения.
+                    Запуск обучающего портала ЮНГП: онлайн-поддержка в реальном
+                    времени + пополняемая база знаний.
                   </p>
                 </div>
               </div>
@@ -866,72 +904,178 @@ export default function DreamZinePresentation() {
                   <div className="text-[#c6ff00]">СТРАТЕГИЧЕСКАЯ ЦЕЛЬ 2026</div>
                 </div>
                 <div className="divide-y divide-zinc-900/80 text-zinc-300">
-                  <div className="grid grid-cols-3 p-4 items-center">
-                    <div className="font-semibold text-white">
-                      Управление структурой классов
+                  {[
+                    {
+                      param: "Управление трубопроводными классами",
+                      old: "Таблицы классов отданы дисциплинам без участия ДРИМ; задания в Google-таблице, многократно изменяются, нет фиксации отработки.",
+                      new: "Регламентированы правила создания классов AVEVA и выдачи заданий. Внедрены шаблоны.",
+                      highlight: false,
+                    },
+                    {
+                      param: "Соответствие НТД / ГОСТ",
+                      old: "Отсутствует проверка: элементы добавлялись с параметрами, не существующими в НТД.",
+                      new: "Проверка заявок на соответствие актуальной НТД РФ; обязательная обратная связь по выполнению.",
+                      highlight: false,
+                    },
+                    {
+                      param: "Кодирование и поиск элементов",
+                      old: "Элементы обезличены — нет системы поиска и логики группировки.",
+                      new: "Введено кодирование элементов для быстрого поиска, корректировки и переиспользования.",
+                      highlight: false,
+                    },
+                    {
+                      param: "Структура каталога",
+                      old: "Все детали в общем списке без логики по классу / материалу / типу / изготовителю.",
+                      new: "Каталог структурирован, понятен и адаптирован для любого нового сотрудника ДРИМ.",
+                      highlight: false,
+                    },
+                    {
+                      param: "Описание деталей",
+                      old: "Описание уникальное и создаётся для каждого элемента отдельно — трудно корректировать.",
+                      new: "Введён интерактивный ссылочный набор описаний — универсальный и легко редактируемый.",
+                      highlight: false,
+                    },
+                    {
+                      param: "Совместимость соединений",
+                      old: "Все элементы присоединялись вне зависимости от совместимости по ГОСТ.",
+                      new: "Добавлена таблица совместимых соединений — соответствие ГОСТ гарантировано.",
+                      highlight: false,
+                    },
+                    {
+                      param: "Учёт крепежа",
+                      old: "Крепёж отсутствует в каталоге. Добавляется в РД текстом, в подсчётах не участвует.",
+                      new: "Добавлены спецификации на крепёжные изделия — полное включение в 3D и МТО.",
+                      highlight: true,
+                    },
+                  ].map((row, i) => (
+                    <div key={i} className="grid grid-cols-3 p-4 items-start">
+                      <div className="font-semibold text-white text-sm pr-4">
+                        {row.param}
+                      </div>
+                      <div className="text-zinc-500 text-sm pr-4">
+                        {row.old}
+                      </div>
+                      <div
+                        className={`p-3 rounded text-sm ${row.highlight ? "text-[#c6ff00] font-medium bg-[#c6ff00]/10 border border-[#c6ff00]/20" : "text-zinc-300 bg-zinc-900/60 border border-zinc-800"}`}
+                      >
+                        {row.new}
+                      </div>
                     </div>
-                    <div className="text-zinc-500 text-sm pr-4">
-                      Неконтролируемые изменения фиксировались в локальных
-                      файлах Google Sheets.
-                    </div>
-                    <div className="text-zinc-300 bg-zinc-900/60 border border-zinc-800 p-3 rounded text-sm">
-                      Строгие шаблоны проверки, которыми владеет внутренняя
-                      команда CAD-управления.
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-3 p-4 items-center">
-                    <div className="font-semibold text-white">
-                      Соответствие стандартам ГОСТ
-                    </div>
-                    <div className="text-zinc-500 text-sm pr-4">
-                      Компоненты иногда создавались с неверными
-                      пользовательскими размерами.
-                    </div>
-                    <div className="text-zinc-300 bg-zinc-900/60 border border-zinc-800 p-3 rounded text-sm">
-                      Обязательные системные проверки с автоматизированными
-                      сообщениями об ошибках.
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-3 p-4 items-center">
-                    <div className="font-semibold text-white">
-                      Схемы идентификаторов деталей
-                    </div>
-                    <div className="text-zinc-500 text-sm pr-4">
-                      Неструктурированные списки имен компонентов, вызывающие
-                      задержки выбора.
-                    </div>
-                    <div className="text-zinc-300 bg-zinc-900/60 border border-zinc-800 p-3 rounded text-sm">
-                      Кодированные шаблоны именования, задающие правила
-                      категоризации смарт-логики.
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-3 p-4 items-center">
-                    <div className="font-semibold text-white">
-                      Массивы отслеживания крепежа
-                    </div>
-                    <div className="text-zinc-500 text-sm pr-4">
-                      Исключены из начальных 3D-слоев; добавлялись вручную при
-                      проверках расчетов.
-                    </div>
-                    <div className="text-[#c6ff00] font-medium bg-[#c6ff00]/10 border border-[#c6ff00]/20 p-3 rounded text-sm">
-                      Полное включение в 3D-моделирование для мгновенной
-                      выгрузки в МТО-пайплайны.
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
           )}
 
-          {/* 12 */}
+          {/* 12 — СТРУКТУРА ДРИМ */}
           {currentSlide === 11 && (
+            <div className="w-full flex flex-col justify-center">
+              <span className="text-sm font-mono text-[#c6ff00] mb-3 block">
+                12 // КОМАНДА ДРИМ
+              </span>
+              <h2 className="text-4xl lg:text-5xl font-bold text-white tracking-tight mb-8">
+                Структура Департамента
+              </h2>
+              <div className="flex flex-col gap-3">
+                {[
+                  {
+                    name: "Елена Дятлова",
+                    role: "Начальник Департамента",
+                    date: "19.11.2024",
+                    skills: [
+                      "Координация задач",
+                      "Стратегия развития 3D",
+                      "Автоматизация производства",
+                      "Контроль работоспособности",
+                      "Обучение сотрудников",
+                    ],
+                  },
+                  {
+                    name: "Рустам Абдрашитов",
+                    role: "Главный специалист",
+                    date: "12.02.2025",
+                    skills: [
+                      "Лицензии",
+                      "Администратор проектов ЛВНГ",
+                      "Макросы AVEVA",
+                      "Внедрение ИИ в AVEVA E3D",
+                    ],
+                  },
+                  {
+                    name: "Регина Кусалиева",
+                    role: "Ведущий специалист",
+                    date: "26.05.2025",
+                    skills: [
+                      "Каталог",
+                      "Трубопроводные классы",
+                      "Стандартизация",
+                      "Интерактивный каталог оборудования",
+                    ],
+                  },
+                  {
+                    name: "Игорь Силантьев",
+                    role: "Главный специалист",
+                    date: "22.06.2025",
+                    skills: [
+                      "Программирование",
+                      "Администратор Евротэк и БХК",
+                      "AVEVA Engineering",
+                      "Обучение сотрудников",
+                      "Работа с базами данных",
+                    ],
+                  },
+                  {
+                    name: "Дмитрий Фомин",
+                    role: "Главный специалист",
+                    date: "09.02.2026",
+                    skills: [
+                      "Tekla Structures",
+                      "Каталог профилей",
+                      "Администратор Tekla",
+                      "Работа с подрядчиками АСО",
+                    ],
+                  },
+                ].map((member, i) => (
+                  <div
+                    key={i}
+                    className="flex flex-col sm:flex-row items-start gap-4 p-4 bg-zinc-900/30 border border-zinc-800 rounded-xl hover:border-zinc-700 transition-all"
+                  >
+                    <div className="sm:w-48 shrink-0">
+                      <div className="font-bold text-white text-sm">
+                        {member.name}
+                      </div>
+                      <div className="text-zinc-500 text-xs font-mono mt-0.5">
+                        {member.role}
+                      </div>
+                      <div className="text-[#c6ff00] text-xs font-mono mt-1">
+                        с {member.date}
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {member.skills.map((s, j) => (
+                        <span
+                          key={j}
+                          className="text-xs font-mono px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400"
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 13 */}
+          {currentSlide === 12 && (
             <div className="w-full flex flex-col justify-center items-center text-center relative py-12">
               <div className="absolute w-96 h-96 bg-[#c6ff00]/5 rounded-full blur-[100px] pointer-events-none" />
               <span className="text-sm font-mono tracking-[0.4em] text-[#c6ff00] mb-4 block uppercase">
                 МИССИЯ ОСНОВНОГО ФРЕЙМВОРКА ЗАВЕРШЕНА
               </span>
               <h1 className="font-bold text-7xl md:text-9xl tracking-tight text-white mb-6">
-                ВОПРОСЫ<span className="text-[#c6ff00]">?</span>
+                СПАСИБО ЗА <span className="text-[#c6ff00]">ВНИМАНИЕ!</span>
               </h1>
               <p className="text-zinc-400 font-light text-base md:text-lg max-w-xl mx-auto leading-relaxed mb-10">
                 Создание единой цифровой архитектуры проектирования для
@@ -963,7 +1107,7 @@ export default function DreamZinePresentation() {
             </div>
             <div className="text-6xl font-black tracking-tighter font-mono text-white">
               {(currentSlide + 1).toString().padStart(2, "0")}
-              <span className="text-zinc-800 text-4xl">/12</span>
+              <span className="text-zinc-800 text-4xl">/{SLIDES.length}</span>
             </div>
             <div className="w-full bg-zinc-900 h-[3px]">
               <div
