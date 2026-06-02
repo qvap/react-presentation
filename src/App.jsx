@@ -121,7 +121,7 @@ export default function DreamZinePresentation() {
           setTimeout(() => {
             setIsTransitioning(false);
           }, ANIMATION_DURATION);
-        }, 50);
+        }, 50); // Небольшая задержка, чтобы React смонтировал новый слайд при opacity-0 перед началом анимации
       }, ANIMATION_DURATION);
     },
     [currentSlide, isTransitioning],
@@ -252,8 +252,8 @@ export default function DreamZinePresentation() {
         <div
           className={`lg:col-span-8 min-h-[560px] flex flex-col justify-center transition-all duration-300 ease-in-out z-20 ${
             fadeState === "out"
-              ? "opacity-0 translate-y-6 scale-[0.97] blur-sm pointer-events-none"
-              : "opacity-100 translate-y-0 scale-100 blur-0"
+              ? "opacity-0 translate-y-6 scale-[0.97] pointer-events-none"
+              : "opacity-100 translate-y-0 scale-100"
           }`}
         >
           {/* 01: ТИТУЛЬНЫЙ */}
@@ -336,7 +336,7 @@ export default function DreamZinePresentation() {
               <span className="text-sm font-mono tracking-widest text-zinc-500 mb-6 uppercase block">
                 03 // Архитектура и философия дизайна
               </span>
-              <div className="relative py-12 px-8 bg-zinc-900/20 border border-zinc-800/60 rounded-2xl max-w-4xl backdrop-blur-md">
+              <div className="relative py-12 px-8 bg-zinc-900/80 border border-zinc-800/60 rounded-2xl max-w-4xl">
                 <i className="fa-solid fa-quote-left text-zinc-800 text-6xl absolute -top-5 left-6 pointer-events-none" />
                 <blockquote className="text-3xl md:text-4xl font-bold text-white leading-tight mb-8 relative z-10 px-6">
                   "AVEVA работает как{" "}
@@ -456,7 +456,7 @@ export default function DreamZinePresentation() {
                       }}
                     >
                       <div
-                        className={`bg-zinc-900/90 border ${offset === 0 ? "border-[#c6ff00]/60 shadow-[0_0_40px_rgba(198,255,0,0.15)]" : "border-zinc-800"} p-8 rounded-2xl flex flex-col md:flex-row gap-6 items-center md:items-start backdrop-blur-xl cursor-${offset === 0 ? "default" : "pointer"} hover:border-[#c6ff00]/40 transition-colors`}
+                        className={`bg-zinc-900/95 border ${offset === 0 ? "border-[#c6ff00]/60 shadow-[0_0_40px_rgba(198,255,0,0.15)]" : "border-zinc-800"} p-8 rounded-2xl flex flex-col md:flex-row gap-6 items-center md:items-start cursor-${offset === 0 ? "default" : "pointer"} hover:border-[#c6ff00]/40 transition-colors`}
                       >
                         <div className="w-full md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left border-b md:border-b-0 md:border-r border-zinc-800 pb-6 md:pb-0 md:pr-6 shrink-0">
                           <div
@@ -530,7 +530,7 @@ export default function DreamZinePresentation() {
                   </span>
                 </div>
               </div>
-              <div className="w-full overflow-x-auto border border-zinc-800/80 rounded-xl bg-zinc-950/40 backdrop-blur-sm">
+              <div className="w-full overflow-x-auto border border-zinc-800/80 rounded-xl bg-zinc-950/90">
                 <table className="w-full text-left text-sm border-collapse font-mono min-w-[700px]">
                   <thead>
                     <tr className="bg-zinc-900/80 border-b border-zinc-800 text-zinc-400">
@@ -897,7 +897,7 @@ export default function DreamZinePresentation() {
                       </div>
                     </div>
                   </div>
-                  <div className="z-10 flex justify-between items-center w-full font-mono text-xs text-zinc-400 bg-zinc-950/80 backdrop-blur-sm p-2 rounded border border-zinc-800/40">
+                  <div className="z-10 flex justify-between items-center w-full font-mono text-xs text-zinc-400 bg-zinc-950/95 p-2 rounded border border-zinc-800/40">
                     <span className="text-[#c6ff00] font-bold tracking-widest animate-pulse">
                       ● ОСНОВНОЙ ПОТОК АКТИВЕН
                     </span>
@@ -1034,7 +1034,7 @@ export default function DreamZinePresentation() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
                   <div className="space-y-4">
-                    <div className="p-5 bg-zinc-950/80 border border-zinc-800/80 rounded-xl backdrop-blur-md hover:border-[#c6ff00]/40 transition-colors shadow-lg">
+                    <div className="p-5 bg-zinc-950/95 border border-zinc-800/80 rounded-xl hover:border-[#c6ff00]/40 transition-colors shadow-lg">
                       <div className="flex items-center gap-3 mb-2 text-[#c6ff00]">
                         <i className="fa-solid fa-arrows-turn-to-dots text-lg"></i>
                         <h4 className="font-medium text-white text-lg">
@@ -1047,7 +1047,7 @@ export default function DreamZinePresentation() {
                       </p>
                     </div>
 
-                    <div className="p-5 bg-zinc-950/80 border border-zinc-800/80 rounded-xl backdrop-blur-md hover:border-[#c6ff00]/40 transition-colors shadow-lg">
+                    <div className="p-5 bg-zinc-950/95 border border-zinc-800/80 rounded-xl hover:border-[#c6ff00]/40 transition-colors shadow-lg">
                       <div className="flex items-center gap-3 mb-2 text-[#c6ff00]">
                         <i className="fa-solid fa-robot text-lg"></i>
                         <h4 className="font-medium text-white text-lg">
@@ -1060,7 +1060,7 @@ export default function DreamZinePresentation() {
                       </p>
                     </div>
 
-                    <div className="p-5 bg-zinc-950/80 border border-zinc-800/80 rounded-xl backdrop-blur-md hover:border-[#c6ff00]/40 transition-colors shadow-lg">
+                    <div className="p-5 bg-zinc-950/95 border border-zinc-800/80 rounded-xl hover:border-[#c6ff00]/40 transition-colors shadow-lg">
                       <div className="flex items-center gap-3 mb-2 text-[#c6ff00]">
                         <i className="fa-solid fa-list-check text-lg"></i>
                         <h4 className="font-medium text-white text-lg">
@@ -1075,7 +1075,7 @@ export default function DreamZinePresentation() {
                   </div>
 
                   <div className="space-y-4 md:mt-8">
-                    <div className="p-5 bg-zinc-950/90 border border-[#c6ff00]/40 rounded-xl backdrop-blur-md shadow-[0_0_30px_rgba(198,255,0,0.1)]">
+                    <div className="p-5 bg-zinc-950/95 border border-[#c6ff00]/40 rounded-xl shadow-[0_0_30px_rgba(198,255,0,0.1)]">
                       <div className="flex items-center gap-3 mb-2 text-[#c6ff00]">
                         <i className="fa-solid fa-calculator text-lg"></i>
                         <h4 className="font-medium text-[#c6ff00] text-lg">
@@ -1089,7 +1089,7 @@ export default function DreamZinePresentation() {
                       </p>
                     </div>
 
-                    <div className="p-5 bg-zinc-950/80 border border-zinc-800/80 rounded-xl backdrop-blur-md hover:border-[#c6ff00]/40 transition-colors shadow-lg">
+                    <div className="p-5 bg-zinc-950/95 border border-zinc-800/80 rounded-xl hover:border-[#c6ff00]/40 transition-colors shadow-lg">
                       <div className="flex items-center gap-3 mb-2 text-[#c6ff00]">
                         <i className="fa-solid fa-network-wired text-lg"></i>
                         <h4 className="font-medium text-white text-lg">
@@ -1145,7 +1145,7 @@ export default function DreamZinePresentation() {
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20 pointer-events-none" />
 
                 {/* Верхний статус-бар */}
-                <div className="z-10 flex justify-between items-center w-full font-mono text-xs text-zinc-400 bg-zinc-950/90 backdrop-blur-md p-2 rounded border border-zinc-800/60 mb-2 shadow-sm">
+                <div className="z-10 flex justify-between items-center w-full font-mono text-xs text-zinc-400 bg-zinc-950/95 p-2 rounded border border-zinc-800/60 mb-2 shadow-sm">
                   <span className="text-[#c6ff00] font-bold tracking-widest flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-[#c6ff00] animate-pulse"></span>
                     СИСТЕМА ДОКУМЕНТООБОРОТА
