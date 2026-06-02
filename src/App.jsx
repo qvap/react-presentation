@@ -774,7 +774,7 @@ export default function DreamZinePresentation() {
                     </span>
                   </div>
                   <p className="text-zinc-500 text-xs">
-                    Переход к внутреннему обучению.
+                    Переход к внутреннему обучение.
                   </p>
                 </div>
                 <div className="p-6 bg-zinc-900/30 border-2 border-[#c6ff00] rounded-xl flex flex-col justify-between min-h-[180px] relative overflow-hidden shadow-[0_0_30px_rgba(198,255,0,0.04)]">
@@ -1006,32 +1006,74 @@ export default function DreamZinePresentation() {
             </div>
           )}
 
-          {/* 11: НОВЫЙ СЛАЙД */}
+          {/* 11: РЕГЛАМЕНТАЦИЯ ТРЕБОВАНИЙ */}
           {currentSlide === 10 && (
-            <div className="w-full flex flex-col justify-center items-center text-center max-w-4xl mx-auto">
-              <span className="text-sm font-mono tracking-widest text-[#c6ff00] mb-6 uppercase block">
-                11 // РЕГЛАМЕНТАЦИЯ ТРЕБОВАНИЙ
-              </span>
-              <h2 className="text-3xl lg:text-4xl font-bold text-white tracking-tight mb-10 leading-tight">
-                Создание внутреннего документа ООО «ЮНГП», регламентирующего
-                требования к 3D
-              </h2>
-              <div className="p-8 bg-zinc-900/40 border border-zinc-800 rounded-2xl text-left">
-                <p className="text-zinc-300 text-lg leading-relaxed mb-6">
-                  Установление единых минимальных требований к разработке
-                  Цифровой информационной модели по всем разделам проектной
-                  документации на всех этапах создания 3D промышленного объекта.
-                </p>
-                <p className="text-zinc-300 text-lg leading-relaxed mb-8">
-                  Описание методики формирования Информационной модели объекта
-                  проектирования; определение базовых правил к структуре,
-                  формату, идентификации, каталогу, цветовому отображению,
-                  деталировке и наполнению при отсутствии требований контрактов.
-                </p>
-                <div className="h-[1px] w-full bg-zinc-800 mb-6" />
-                <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest">
+            <div className="w-full flex flex-col lg:flex-row items-stretch gap-10 justify-center">
+              {/* Левая половина: Текст */}
+              <div className="w-full lg:w-1/2 flex flex-col justify-center">
+                <span className="text-sm font-mono text-[#c6ff00] mb-3 block uppercase tracking-widest">
+                  11 // РЕГЛАМЕНТАЦИЯ ТРЕБОВАНИЙ
+                </span>
+                <h2 className="text-3xl lg:text-4xl font-bold text-white tracking-tight mb-6 leading-tight">
+                  Внутренний регламент ООО «ЮНГП»
+                </h2>
+                <div className="space-y-4 text-zinc-400 text-sm lg:text-base leading-relaxed">
+                  <p>
+                    Установление единых минимальных требований к разработке
+                    Цифровой информационной модели по всем разделам проектной
+                    документации на всех этапах создания 3D промышленного
+                    объекта.
+                  </p>
+                  <p>
+                    Описывает методику формирования Информационной модели,
+                    определяет базовые правила к структуре, формату,
+                    идентификации, каталогу, цветовому отображению, деталировке
+                    и наполнению при отсутствии специальных требований
+                    контрактов.
+                  </p>
+                </div>
+                <div className="mt-8 p-4 border-l-2 border-[#c6ff00] bg-[#c6ff00]/5 text-zinc-300 font-mono text-xs uppercase tracking-wider">
+                  <i className="fa-solid fa-file-signature text-[#c6ff00] mr-2"></i>
                   Утвержден и введен в действие приказом № 15 от 04.03.2026 г.
-                </p>
+                </div>
+              </div>
+
+              {/* Правая половина: Окно PDF */}
+              <div className="w-full lg:w-1/2 h-[400px] lg:h-[500px] relative border border-zinc-800 rounded-xl overflow-hidden bg-zinc-950 flex flex-col p-2 group shadow-2xl shadow-black/50">
+                {/* Сетка бэкграунда */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20 pointer-events-none" />
+
+                {/* Верхний статус-бар */}
+                <div className="z-10 flex justify-between items-center w-full font-mono text-xs text-zinc-400 bg-zinc-950/90 backdrop-blur-md p-2 rounded border border-zinc-800/60 mb-2 shadow-sm">
+                  <span className="text-[#c6ff00] font-bold tracking-widest flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#c6ff00] animate-pulse"></span>
+                    СИСТЕМА ДОКУМЕНТООБОРОТА
+                  </span>
+                  <span>PDF_VIEWER_V1.0</span>
+                </div>
+
+                {/* Контейнер для PDF */}
+                <div className="relative flex-1 w-full bg-zinc-900/50 rounded border border-zinc-800/60 overflow-hidden z-10 flex flex-col">
+                  <iframe
+                    src={`${import.meta.env.BASE_URL}reglament.pdf`}
+                    className="w-full h-full border-none bg-white/90 relative z-20"
+                    title="Регламент 3D"
+                  />
+                  {/* Placeholder на случай, если PDF не загрузится (удобно для демо-режима) */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10 font-mono text-zinc-600 text-center p-4">
+                    <i className="fa-regular fa-file-pdf text-4xl mb-3 text-zinc-700"></i>
+                    <span>Загрузка документа...</span>
+                    <span className="text-[10px] mt-2">
+                      Ожидание public/document.pdf
+                    </span>
+                  </div>
+                </div>
+
+                {/* Нижний статус-бар */}
+                <div className="z-10 flex justify-between items-center w-full font-mono text-xs text-zinc-500 bg-gradient-to-t from-zinc-950 to-transparent p-2 mt-2">
+                  <span className="text-zinc-400">ПОЛОЖЕНИЕ П3 09-01-2026</span>
+                  <span>СТАТУС: АКТИВЕН</span>
+                </div>
               </div>
             </div>
           )}
