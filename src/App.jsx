@@ -35,7 +35,8 @@ const SLIDES = [
   { id: "11", tag: "АУДИТ КОНВЕЙЕРА", title: "ЭВОЛЮЦИЯ КАТАЛОГА" },
   { id: "12", tag: "ИНТЕГРАЦИЯ АСО", title: "TEKLA STRUCTURES" },
   { id: "13", tag: "РЕГЛАМЕНТАЦИЯ", title: "ВНУТРЕННИЙ ДОКУМЕНТ" },
-  { id: "14", tag: "МИССИЯ ЗАВЕРШЕНА", title: "ВОПРОСЫ И ОТВЕТЫ" },
+  { id: "14", tag: "ПЛАНЫ НА БУДУЩЕЕ", title: "ЦЕЛИ 2026-2027" },
+  { id: "15", tag: "МИССИЯ ЗАВЕРШЕНА", title: "ВОПРОСЫ И ОТВЕТЫ" },
 ];
 
 const TEAM_MEMBERS = [
@@ -204,6 +205,23 @@ export default function DreamZinePresentation() {
       >
         <img
           src={`${import.meta.env.BASE_URL}teklabg.JPG`}
+          alt="Tekla Fullscreen Background"
+          className="w-full h-full object-cover opacity-50"
+          onError={(e) => {
+            e.target.style.display = "none";
+          }}
+        />
+        {/* Затемняющий оверлей */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050506] via-[#050506]/70 to-[#050506]/40" />
+      </div>
+
+      <div
+        className={`absolute inset-0 z-0 transition-opacity duration-700 ease-in-out pointer-events-none ${
+          currentSlide === 1 ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <img
+          src={`${import.meta.env.BASE_URL}bg2.png`}
           alt="Tekla Fullscreen Background"
           className="w-full h-full object-cover opacity-50"
           onError={(e) => {
@@ -1351,8 +1369,125 @@ export default function DreamZinePresentation() {
             </div>
           )}
 
-          {/* 14: МИССИЯ ЗАВЕРШЕНА */}
+          {/* 14: ЦЕЛИ 2026-2027 */}
           {currentSlide === 13 && (
+            <div className="w-full flex flex-col justify-center">
+              <span className="text-sm font-mono text-[#c6ff00] mb-3 block uppercase tracking-widest">
+                14 // ПЛАНЫ НА БУДУЩЕЕ
+              </span>
+              <h2 className="text-4xl lg:text-5xl font-bold text-white tracking-tight mb-8">
+                Стратегические цели 2026–2027
+              </h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto w-full">
+                {/* Блок 1: Управление и процессы */}
+                <div className="p-6 bg-zinc-900/40 border border-zinc-800 rounded-xl hover:border-[#c6ff00]/40 transition-colors shadow-lg">
+                  <div className="flex items-center gap-3 mb-4 text-[#c6ff00]">
+                    <i className="fa-solid fa-list-check text-2xl"></i>
+                    <h3 className="font-bold text-xl text-white">
+                      Управление и процессы
+                    </h3>
+                  </div>
+                  <ul className="space-y-3 text-zinc-400 text-sm leading-relaxed">
+                    <li className="flex items-start gap-2">
+                      <i className="fa-solid fa-arrow-right text-[#c6ff00] mt-1 text-xs shrink-0"></i>
+                      <span>
+                        Запуск автоматизированного способа выдачи заданий в АСО
+                        (с заморозкой)
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <i className="fa-solid fa-arrow-right text-[#c6ff00] mt-1 text-xs shrink-0"></i>
+                      <span>
+                        Подсчет выработки и назначение ее нормы при создании ИМ
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Блок 2: Развитие компетенций */}
+                <div className="p-6 bg-zinc-900/40 border border-zinc-800 rounded-xl hover:border-[#c6ff00]/40 transition-colors shadow-lg">
+                  <div className="flex items-center gap-3 mb-4 text-[#c6ff00]">
+                    <i className="fa-solid fa-graduation-cap text-2xl"></i>
+                    <h3 className="font-bold text-xl text-white">
+                      Развитие компетенций
+                    </h3>
+                  </div>
+                  <ul className="space-y-3 text-zinc-400 text-sm leading-relaxed">
+                    <li className="flex items-start gap-2">
+                      <i className="fa-solid fa-arrow-right text-[#c6ff00] mt-1 text-xs shrink-0"></i>
+                      <span>
+                        Создание обучающей платформы для вновь нанятых
+                        сотрудников. Связь с TDMS
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <i className="fa-solid fa-arrow-right text-[#c6ff00] mt-1 text-xs shrink-0"></i>
+                      <span>
+                        Достижение максимального результата в 3D навыках среди
+                        сотрудников
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Блок 3: Экосистема AVEVA & ИИ */}
+                <div className="p-6 bg-zinc-900/40 border border-zinc-800 rounded-xl hover:border-[#c6ff00]/40 transition-colors shadow-lg">
+                  <div className="flex items-center gap-3 mb-4 text-[#c6ff00]">
+                    <i className="fa-solid fa-brain text-2xl"></i>
+                    <h3 className="font-bold text-xl text-white">
+                      Экосистема AVEVA & ИИ
+                    </h3>
+                  </div>
+                  <ul className="space-y-3 text-zinc-400 text-sm leading-relaxed">
+                    <li className="flex items-start gap-2">
+                      <i className="fa-solid fa-arrow-right text-[#c6ff00] mt-1 text-xs shrink-0"></i>
+                      <span>
+                        Запуск AVEVA Engineering, как модуля генерации и
+                        хранения всех данных 3D проекта
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <i className="fa-solid fa-arrow-right text-[#c6ff00] mt-1 text-xs shrink-0"></i>
+                      <span>
+                        Обучение ИИ работе AVEVA E3D: создание оборудования и
+                        сетей (трубопроводных и кабельных)
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Блок 4: Технологии Tekla */}
+                <div className="p-6 bg-zinc-900/40 border border-zinc-800 rounded-xl hover:border-[#c6ff00]/40 transition-colors shadow-lg">
+                  <div className="flex items-center gap-3 mb-4 text-[#c6ff00]">
+                    <i className="fa-solid fa-cubes text-2xl"></i>
+                    <h3 className="font-bold text-xl text-white">
+                      Развитие Tekla Structures
+                    </h3>
+                  </div>
+                  <ul className="space-y-3 text-zinc-400 text-sm leading-relaxed">
+                    <li className="flex items-start gap-2">
+                      <i className="fa-solid fa-arrow-right text-[#c6ff00] mt-1 text-xs shrink-0"></i>
+                      <span>
+                        Разработка приложения с моделями типовых узлов
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <i className="fa-solid fa-arrow-right text-[#c6ff00] mt-1 text-xs shrink-0"></i>
+                      <span>
+                        Создание плагина нетиповых решений при создании моделей
+                        (выбор сечений и шага профиля, включение
+                        автоматизированных узлов)
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* 15: МИССИЯ ЗАВЕРШЕНА */}
+          {currentSlide === 14 && (
             <div className="w-full flex flex-col justify-center items-center text-center relative py-12">
               <div className="absolute w-96 h-96 bg-[#c6ff00]/5 rounded-full blur-[100px] pointer-events-none" />
               <h1 className="font-bold text-7xl md:text-9xl tracking-tight text-white mb-6">
