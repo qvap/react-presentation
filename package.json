@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://qvap.github.io/react-presentation/",
+  "homepage": "https://qvap.github.io/yungp/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

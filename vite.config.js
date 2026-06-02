@@ -8,5 +8,5 @@ export default defineConfig({
     react(),
     tailwindcss(), // <-- Add this
   ],
-  base: "/react-presentation/",
+  base: "/yungp/",
 });

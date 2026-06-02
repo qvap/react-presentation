@@ -32,8 +32,9 @@ const SLIDES = [
   { id: "08", tag: "ИНФРАСТРУКТУРА ПОСТАВКИ", title: "ДОСТУП К 3D МОДЕЛЯМ" },
   { id: "09", tag: "ОБЕСПЕЧЕНИЕ КАЧЕСТВА", title: "ОПТИМИЗАЦИЯ МОДЕЛЕЙ" },
   { id: "10", tag: "АУДИТ КОНВЕЙЕРА", title: "ЭВОЛЮЦИЯ КАТАЛОГА" },
-  { id: "11", tag: "РЕГЛАМЕНТАЦИЯ", title: "ВНУТРЕННИЙ ДОКУМЕНТ" },
-  { id: "12", tag: "МИССИЯ ЗАВЕРШЕНА", title: "ВОПРОСЫ И ОТВЕТЫ" },
+  { id: "11", tag: "ИНТЕГРАЦИЯ АСО", title: "TEKLA STRUCTURES" },
+  { id: "12", tag: "РЕГЛАМЕНТАЦИЯ", title: "ВНУТРЕННИЙ ДОКУМЕНТ" },
+  { id: "13", tag: "МИССИЯ ЗАВЕРШЕНА", title: "ВОПРОСЫ И ОТВЕТЫ" },
 ];
 
 const TEAM_MEMBERS = [
@@ -126,27 +127,23 @@ export default function DreamZinePresentation() {
     [currentSlide, isTransitioning],
   );
 
-  // Переопределенный обработчик "Вперед"
   const nextSlide = useCallback(() => {
     if (currentSlide === 3 && currentSubSlide < TEAM_MEMBERS.length - 1) {
-      setCurrentSubSlide((prev) => prev + 1); // Листаем карусель, если мы на 4 слайде
+      setCurrentSubSlide((prev) => prev + 1);
       return;
     }
     changeSlide((currentSlide + 1) % SLIDES.length, 0);
   }, [currentSlide, currentSubSlide, changeSlide]);
 
-  // Переопределенный обработчик "Назад"
   const prevSlide = useCallback(() => {
     if (currentSlide === 3 && currentSubSlide > 0) {
-      setCurrentSubSlide((prev) => prev - 1); // Листаем карусель назад
+      setCurrentSubSlide((prev) => prev - 1);
       return;
     }
     const newIndex = (currentSlide - 1 + SLIDES.length) % SLIDES.length;
-    // Если возвращаемся на слайд 4 с 5-го, открываем карусель с конца
     changeSlide(newIndex, newIndex === 3 ? TEAM_MEMBERS.length - 1 : 0);
   }, [currentSlide, currentSubSlide, changeSlide]);
 
-  // Глобальный цикл анимации потока
   useEffect(() => {
     const frameInterval = setInterval(() => {
       setCurrentFrame((prevFrame) => (prevFrame + 1) % TOTAL_FRAMES);
@@ -154,7 +151,6 @@ export default function DreamZinePresentation() {
     return () => clearInterval(frameInterval);
   }, []);
 
-  // Обработчик клавиатуры
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (isTransitioning) return;
@@ -172,14 +168,37 @@ export default function DreamZinePresentation() {
   }, [isTransitioning, nextSlide, prevSlide]);
 
   return (
-    <div className="min-h-screen bg-[#050506] text-zinc-100 font-sans overflow-hidden relative p-4 md:p-6 flex flex-col justify-between border-8 border-[#111111] selection:bg-[#CCFF00] selection:text-black">
-      {/* Сетка бэкграунда */}
+    <div className="min-h-screen bg-[#050506] text-zinc-100 font-sans overflow-hidden relative flex flex-col justify-between border-8 border-[#111111] selection:bg-[#CCFF00] selection:text-black">
+      {/* ----------------------------------------------------------- */}
+      {/* --- ГЛОБАЛЬНЫЕ ФОНЫ (Спрятаны под шапкой и футером) --- */}
+      {/* ----------------------------------------------------------- */}
+
+      {/* Полноэкранный фон для слайда Tekla */}
+      <div
+        className={`absolute inset-0 z-0 transition-opacity duration-700 ease-in-out pointer-events-none ${
+          currentSlide === 10 ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <img
+          src={`${import.meta.env.BASE_URL}teklabg.JPG`}
+          alt="Tekla Fullscreen Background"
+          className="w-full h-full object-cover opacity-50"
+          onError={(e) => {
+            e.target.style.display = "none";
+          }}
+        />
+        {/* Затемняющий оверлей */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050506] via-[#050506]/70 to-[#050506]/40" />
+      </div>
+
+      {/* Базовые декоративные сетки и градиенты бэкграунда */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(18,18,18,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(18,18,18,0.3)_1px,transparent_1px)] bg-[size:25px_25px] pointer-events-none z-0" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-zinc-900/40 via-transparent to-transparent pointer-events-none z-0" />
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.005)_50%,rgba(0,0,0,0.15)_50%)] bg-[size:100%_4px] pointer-events-none z-10" />
+      {/* ----------------------------------------------------------- */}
 
-      {/* --- ШАПКА --- */}
-      <header className="z-20 w-full flex justify-between items-start border-b-2 border-zinc-800 pb-4 mix-blend-difference">
+      {/* --- ШАПКА (Имеет фон #050506 и перекрывает картинку) --- */}
+      <header className="relative z-30 w-full flex justify-between items-start border-b-2 border-zinc-800 bg-[#050506] px-4 md:px-6 pt-4 md:pt-6 pb-4">
         <div className="flex flex-col">
           <span className="font-mono text-xs tracking-widest text-[#CCFF00]">
             {METADATA.version}
@@ -200,14 +219,14 @@ export default function DreamZinePresentation() {
       </header>
 
       {/* --- ОСНОВНОЙ ФРЕЙМ --- */}
-      <main className="z-20 my-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-6 relative">
-        <div className="absolute -left-6 -bottom-16 text-[28vw] font-black text-zinc-900 opacity-20 select-none pointer-events-none tracking-tighter z-0 leading-none">
+      <main className="z-20 my-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-6 px-4 md:px-6 relative">
+        <div className="absolute -left-6 -bottom-16 text-[28vw] font-black text-zinc-900 opacity-20 select-none pointer-events-none tracking-tighter z-0 leading-none mix-blend-overlay">
           {SLIDES[currentSlide].id}
         </div>
 
         {/* Сайдбар Матрица (Лево) */}
         <div className="lg:col-span-2 flex flex-col items-center lg:items-start justify-center max-h-[75vh]">
-          <div className="border-2 border-dashed border-zinc-800 p-4 w-full max-w-[240px] bg-black/80 backdrop-blur-md text-left space-y-4 overflow-y-auto custom-scrollbar">
+          <div className="border-2 border-dashed border-zinc-800/80 p-4 w-full max-w-[240px] bg-black/80 backdrop-blur-md text-left space-y-4 overflow-y-auto custom-scrollbar">
             <div className="font-mono text-xs text-zinc-500">
               МАТРИЦА_СЛАЙДОВ
             </div>
@@ -219,7 +238,7 @@ export default function DreamZinePresentation() {
                   className={`text-left font-mono text-xs uppercase transition-all duration-300 py-1.5 ${
                     currentSlide === idx
                       ? "text-[#CCFF00] font-bold tracking-widest border-l-4 border-[#CCFF00] pl-3 bg-zinc-900/60"
-                      : "text-zinc-600 hover:text-white pl-3"
+                      : "text-zinc-500 hover:text-white pl-3"
                   }`}
                 >
                   [{slide.id}] {slide.title}
@@ -368,7 +387,7 @@ export default function DreamZinePresentation() {
             </div>
           )}
 
-          {/* 04: СТРУКТУРА ДРИМ (Интерактивная Карусель) */}
+          {/* 04: СТРУКТУРА ДРИМ */}
           {currentSlide === 3 && (
             <div className="w-full flex flex-col justify-center min-h-[500px]">
               <div className="flex justify-between items-end mb-6 px-4">
@@ -388,7 +407,6 @@ export default function DreamZinePresentation() {
                 </div>
               </div>
 
-              {/* Зона карусели */}
               <div
                 className="relative w-full h-[340px] flex items-center justify-center mt-2"
                 style={{ perspective: "1000px" }}
@@ -406,12 +424,10 @@ export default function DreamZinePresentation() {
                       "translateX(0) translateZ(0) rotateY(0deg) scale(1)";
                     opacityStyle = "1";
                   } else if (offset === -1) {
-                    // Карточка слева (прошлая)
                     transformStyle =
                       "translateX(-38%) translateZ(-50px) rotateY(12deg) scale(0.85)";
                     opacityStyle = "0.5";
                   } else if (offset === 1) {
-                    // Карточка справа (следующая)
                     transformStyle =
                       "translateX(38%) translateZ(-50px) rotateY(-12deg) scale(0.85)";
                     opacityStyle = "0.5";
@@ -480,7 +496,6 @@ export default function DreamZinePresentation() {
                 })}
               </div>
 
-              {/* Индикаторы (Точки) Карусели */}
               <div className="flex justify-center gap-3 mt-6 relative z-10">
                 {TEAM_MEMBERS.map((_, idx) => (
                   <button
@@ -1006,13 +1021,99 @@ export default function DreamZinePresentation() {
             </div>
           )}
 
-          {/* 11: РЕГЛАМЕНТАЦИЯ ТРЕБОВАНИЙ */}
+          {/* 11: TEKLA STRUCTURES */}
           {currentSlide === 10 && (
+            <div className="w-full flex flex-col justify-center relative min-h-[500px] z-10">
+              <div className="relative z-10 w-full max-w-5xl mx-auto">
+                <span className="text-sm font-mono text-[#c6ff00] mb-3 block uppercase tracking-widest drop-shadow-md">
+                  11 // ИНТЕГРАЦИЯ АСО
+                </span>
+                <h2 className="text-4xl lg:text-5xl font-bold text-white tracking-tight mb-10 drop-shadow-lg">
+                  Tekla Structures
+                </h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
+                  <div className="space-y-4">
+                    <div className="p-5 bg-zinc-950/80 border border-zinc-800/80 rounded-xl backdrop-blur-md hover:border-[#c6ff00]/40 transition-colors shadow-lg">
+                      <div className="flex items-center gap-3 mb-2 text-[#c6ff00]">
+                        <i className="fa-solid fa-arrows-turn-to-dots text-lg"></i>
+                        <h4 className="font-medium text-white text-lg">
+                          Кросс-платформенность
+                        </h4>
+                      </div>
+                      <p className="text-zinc-400 text-sm leading-relaxed">
+                        Настроен маппинг элементов между AVEVA и Tekla
+                        Structures.
+                      </p>
+                    </div>
+
+                    <div className="p-5 bg-zinc-950/80 border border-zinc-800/80 rounded-xl backdrop-blur-md hover:border-[#c6ff00]/40 transition-colors shadow-lg">
+                      <div className="flex items-center gap-3 mb-2 text-[#c6ff00]">
+                        <i className="fa-solid fa-robot text-lg"></i>
+                        <h4 className="font-medium text-white text-lg">
+                          Автоматизация выгрузок
+                        </h4>
+                      </div>
+                      <p className="text-zinc-400 text-sm leading-relaxed">
+                        Настроена автоматическая загрузка и обновление
+                        измененных моделей АСО (без участия человека).
+                      </p>
+                    </div>
+
+                    <div className="p-5 bg-zinc-950/80 border border-zinc-800/80 rounded-xl backdrop-blur-md hover:border-[#c6ff00]/40 transition-colors shadow-lg">
+                      <div className="flex items-center gap-3 mb-2 text-[#c6ff00]">
+                        <i className="fa-solid fa-list-check text-lg"></i>
+                        <h4 className="font-medium text-white text-lg">
+                          Ведомости и спецификации
+                        </h4>
+                      </div>
+                      <p className="text-zinc-400 text-sm leading-relaxed">
+                        Выполнена отладка вывода спецификаций и настроено
+                        формирование Ведомости объемов работ напрямую из среды.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 md:mt-8">
+                    <div className="p-5 bg-zinc-950/90 border border-[#c6ff00]/40 rounded-xl backdrop-blur-md shadow-[0_0_30px_rgba(198,255,0,0.1)]">
+                      <div className="flex items-center gap-3 mb-2 text-[#c6ff00]">
+                        <i className="fa-solid fa-calculator text-lg"></i>
+                        <h4 className="font-medium text-[#c6ff00] text-lg">
+                          Интеграция с ЛИРА
+                        </h4>
+                      </div>
+                      <p className="text-zinc-300 text-sm leading-relaxed">
+                        Разработана и внедрена пользовательская утилита импорта
+                        из расчетного программного комплекса ЛИРА-САПР напрямую
+                        в Tekla Structures.
+                      </p>
+                    </div>
+
+                    <div className="p-5 bg-zinc-950/80 border border-zinc-800/80 rounded-xl backdrop-blur-md hover:border-[#c6ff00]/40 transition-colors shadow-lg">
+                      <div className="flex items-center gap-3 mb-2 text-[#c6ff00]">
+                        <i className="fa-solid fa-network-wired text-lg"></i>
+                        <h4 className="font-medium text-white text-lg">
+                          Сетевая архитектура
+                        </h4>
+                      </div>
+                      <p className="text-zinc-400 text-sm leading-relaxed">
+                        Внедрен сетевой ярлык для запуска среды с настроенным
+                        автоматическим обновлением компонентов у пользователей.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* 12: РЕГЛАМЕНТАЦИЯ ТРЕБОВАНИЙ */}
+          {currentSlide === 11 && (
             <div className="w-full flex flex-col lg:flex-row items-stretch gap-10 justify-center">
               {/* Левая половина: Текст */}
               <div className="w-full lg:w-1/2 flex flex-col justify-center">
                 <span className="text-sm font-mono text-[#c6ff00] mb-3 block uppercase tracking-widest">
-                  11 // РЕГЛАМЕНТАЦИЯ ТРЕБОВАНИЙ
+                  12 // РЕГЛАМЕНТАЦИЯ ТРЕБОВАНИЙ
                 </span>
                 <h2 className="text-3xl lg:text-4xl font-bold text-white tracking-tight mb-6 leading-tight">
                   Внутренний регламент ООО «ЮНГП»
@@ -1078,12 +1179,12 @@ export default function DreamZinePresentation() {
             </div>
           )}
 
-          {/* 12: МИССИЯ ЗАВЕРШЕНА */}
-          {currentSlide === 11 && (
+          {/* 13: МИССИЯ ЗАВЕРШЕНА */}
+          {currentSlide === 12 && (
             <div className="w-full flex flex-col justify-center items-center text-center relative py-12">
               <div className="absolute w-96 h-96 bg-[#c6ff00]/5 rounded-full blur-[100px] pointer-events-none" />
               <h1 className="font-bold text-7xl md:text-9xl tracking-tight text-white mb-6">
-                СПАСИБО ЗА <span className="text-[#c6ff00]">ВНИМАНИЕ!</span>
+                ВОПРОСЫ<span className="text-[#c6ff00]">?</span>
               </h1>
               <p className="text-zinc-400 font-light text-base md:text-lg max-w-xl mx-auto leading-relaxed mb-10">
                 Создание единой цифровой архитектуры проектирования для
@@ -1109,13 +1210,13 @@ export default function DreamZinePresentation() {
 
         {/* Правый инфо-блок с индикатором прогресса */}
         <div className="lg:col-span-2 flex flex-col items-center lg:items-end justify-center z-10">
-          <div className="border-2 border-dashed border-zinc-800 p-6 w-full max-w-[220px] bg-black text-center lg:text-right space-y-5">
+          <div className="border-2 border-dashed border-zinc-800/80 p-6 w-full max-w-[220px] bg-black/80 backdrop-blur-md text-center lg:text-right space-y-5">
             <div className="font-mono text-xs text-zinc-500">
               ПРОГРЕСС_СЕССИИ
             </div>
             <div className="text-6xl font-black tracking-tighter font-mono text-white">
               {(currentSlide + 1).toString().padStart(2, "0")}
-              <span className="text-zinc-800 text-4xl">/{SLIDES.length}</span>
+              <span className="text-zinc-500 text-4xl">/{SLIDES.length}</span>
             </div>
             <div className="w-full bg-zinc-900 h-[3px]">
               <div
@@ -1129,8 +1230,8 @@ export default function DreamZinePresentation() {
         </div>
       </main>
 
-      {/* --- НАВИГАЦИОННЫЙ ФУТЕР БРУТАЛИЗМ --- */}
-      <footer className="z-20 w-full flex flex-col md:flex-row justify-between items-center border-t-2 border-zinc-800 pt-5 gap-4">
+      {/* --- НАВИГАЦИОННЫЙ ФУТЕР (Имеет фон #050506 и перекрывает картинку) --- */}
+      <footer className="relative z-30 w-full flex flex-col md:flex-row justify-between items-center border-t-2 border-zinc-800 bg-[#050506] px-4 md:px-6 pb-4 md:pb-6 pt-5 gap-4">
         <div className="font-mono text-[10px] md:text-xs text-zinc-600 order-2 md:order-1 text-center md:text-left uppercase">
           © 2026 ООО ЮНГП // ДРИМ. РАЗРАБОТКА И РЕГЛАМЕНТАЦИЯ ТРЕБОВАНИЙ К 3D
           МОДЕЛЯМ.
