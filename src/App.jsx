@@ -1,4 +1,46 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
+
+const AnimatedPercentage = ({ value }) => {
+  const target = parseInt(value.replace("%", ""), 10);
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          let startTimestamp = null;
+          const duration = 1500;
+
+          const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            
+            setCount(Math.floor(easeOut * target));
+
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            }
+          };
+          window.requestAnimationFrame(step);
+        } else {
+          setCount(0); 
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, [target]);
+
+  return <span ref={ref}>{count}%</span>;
+};
 
 // --- КОНСТАНТЫ ИДЕНТИФИКАЦИИ ДАННЫХ ---
 const METADATA = {
@@ -43,7 +85,7 @@ const TEAM_MEMBERS = [
   {
     name: "Елена Дятлова",
     role: "Начальник Департамента",
-    date: "19.11.2024",
+    date: "ноября 2024",
     photo: "photos/2.png",
     skills: [
       "Координация задач",
@@ -56,7 +98,7 @@ const TEAM_MEMBERS = [
   {
     name: "Рустам Абдрашитов",
     role: "Главный специалист",
-    date: "12.02.2025",
+    date: "февраля 2025",
     photo: "photos/1.png",
     skills: [
       "Лицензии",
@@ -68,7 +110,7 @@ const TEAM_MEMBERS = [
   {
     name: "Регина Кусалиева",
     role: "Ведущий специалист",
-    date: "26.05.2025",
+    date: "мая 2025",
     photo: "photos/3.png",
     skills: [
       "Каталог",
@@ -80,7 +122,7 @@ const TEAM_MEMBERS = [
   {
     name: "Игорь Силантьев",
     role: "Главный специалист",
-    date: "22.06.2025",
+    date: "июня 2025",
     photo: "photos/4.png",
     skills: [
       "Программирование",
@@ -93,13 +135,14 @@ const TEAM_MEMBERS = [
   {
     name: "Дмитрий Фомин",
     role: "Главный специалист",
-    date: "09.02.2026",
+    date: "февраля 2026",
     photo: "photos/5.png",
     skills: [
       "Tekla Structures",
       "Каталог профилей",
       "Администратор Tekla",
       "Работа с подрядчиками АСО",
+      "Маппинг",
     ],
   },
 ];
@@ -188,7 +231,7 @@ export default function DreamZinePresentation() {
       >
         <img
           src={`${import.meta.env.BASE_URL}bg.png`}
-          alt="Tekla Fullscreen Background"
+          alt="First Fullscreen Background"
           className="w-full h-full object-cover opacity-50"
           onError={(e) => {
             e.target.style.display = "none";
@@ -222,7 +265,24 @@ export default function DreamZinePresentation() {
       >
         <img
           src={`${import.meta.env.BASE_URL}bg2.png`}
-          alt="Tekla Fullscreen Background"
+          alt="Second Fullscreen Background"
+          className="w-full h-full object-cover opacity-50"
+          onError={(e) => {
+            e.target.style.display = "none";
+          }}
+        />
+        {/* Затемняющий оверлей */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050506] via-[#050506]/70 to-[#050506]/40" />
+      </div>
+
+      <div
+        className={`absolute inset-0 z-0 transition-opacity duration-700 ease-in-out pointer-events-none ${
+          currentSlide === 10 ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <img
+          src={`${import.meta.env.BASE_URL}bg3.png`}
+          alt="Third Fullscreen Background"
           className="w-full h-full object-cover opacity-50"
           onError={(e) => {
             e.target.style.display = "none";
@@ -312,7 +372,7 @@ export default function DreamZinePresentation() {
                 </span>
               </h1>
               <p className="text-zinc-400 max-w-3xl text-lg lg:text-xl font-light leading-relaxed mb-10">
-                Создано при помощи искусственного интеллекта 😎
+                Создано при помощи искусственного интеллекта
               </p>
               <div className="flex items-center gap-6">
                 <button
@@ -343,17 +403,17 @@ export default function DreamZinePresentation() {
                 Единая экосистема управления информацией с полным контролем
                 архитектуры. В отличие от SMART, AVEVA позволяет создавать
                 настраиваемые базы данных под специфические требования
-                организации.
+                организации
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 max-w-4xl">
                 <div className="p-6 bg-zinc-900/40 border border-zinc-800 rounded-lg">
                   <i className="fa-solid fa-diagram-project text-[#c6ff00] mb-4 text-3xl block" />
                   <h4 className="text-white font-medium text-lg mb-2">
-                    P&ID → 3D автоматически
+                    Технологические схемы создаются в AVEVA Diagrams
                   </h4>
                   <p className="text-zinc-500 text-sm leading-relaxed">
-                    Атрибуты оборудования и трубопроводов из AVEVA Diagrams
-                    автоматически передаются в 3D-геометрию E3D и документацию.
+                    Атрибуты оборудования и трубопроводов автоматически
+                    передаются в 3D-геометрию и документацию.
                   </p>
                 </div>
                 <div className="p-6 bg-zinc-900/40 border border-zinc-800 rounded-lg">
@@ -364,7 +424,7 @@ export default function DreamZinePresentation() {
                   <p className="text-zinc-500 text-sm leading-relaxed">
                     Строительные конструкции Tekla Structures воспринимаются
                     «родными» элементами AVEVA — с идентификацией профиля,
-                    замерами и атрибутами.
+                    возможностью замеров и атрибутами.
                   </p>
                 </div>
               </div>
@@ -585,18 +645,13 @@ export default function DreamZinePresentation() {
                     Повышение 3D-компетенций подразделений
                   </h2>
                 </div>
-                <div className="flex items-center gap-1 bg-zinc-900 p-1.5 rounded-lg border border-zinc-800 font-mono text-xs">
-                  <span className="bg-zinc-800 text-white px-3 py-1.5 rounded">
-                    Табличный вид
-                  </span>
-                </div>
               </div>
               <div className="w-full overflow-x-auto border border-zinc-800/80 rounded-xl bg-zinc-950/90">
                 <table className="w-full text-left text-sm border-collapse font-mono min-w-[700px]">
                   <thead>
                     <tr className="bg-zinc-900/80 border-b border-zinc-800 text-zinc-400">
                       <th className="p-4 font-medium uppercase tracking-wider">
-                        Класс подразделения
+                        Отдел
                       </th>
                       <th className="p-4 font-medium uppercase tracking-wider text-center">
                         Штат (24)
@@ -719,7 +774,7 @@ export default function DreamZinePresentation() {
                           <span
                             className={`px-2 py-1 rounded font-bold bg-[#c6ff00]/10 border border-[#c6ff00]/20 text-[#c6ff00]`}
                           >
-                            {row.r26}
+                            <AnimatedPercentage value={row.r26} />
                           </span>
                         </td>
                       </tr>
@@ -737,7 +792,7 @@ export default function DreamZinePresentation() {
                 06 // ИНДЕКС ЕМКОСТИ ПОРТФЕЛЯ
               </span>
               <h2 className="text-4xl lg:text-5xl font-bold text-white tracking-tight mb-10">
-                Активное масштабирование портфеля 3D проектов
+                Масштабирование портфеля 3D проектов
               </h2>
               <div className="space-y-8">
                 <div className="space-y-2">
@@ -827,7 +882,7 @@ export default function DreamZinePresentation() {
               <div className="w-full lg:w-3/5 grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="p-6 bg-zinc-900/20 border border-zinc-800 rounded-xl flex flex-col justify-between min-h-[180px]">
                   <span className="text-xs font-mono text-zinc-500 uppercase">
-                    Расходы вендора 2024
+                    Расходы 2024
                   </span>
                   <div className="my-4">
                     <span className="font-bold text-4xl text-white">2.18M</span>
@@ -1062,7 +1117,7 @@ export default function DreamZinePresentation() {
                 10 // СТАНДАРТЫ ОБЕСПЕЧЕНИЯ КАЧЕСТВА
               </span>
               <h2 className="text-4xl lg:text-5xl font-bold text-white tracking-tight mb-8">
-                Оптимизация инженерной модели. Повышение детализации объектов.
+                Оптимизация инженерной модели. Повышение детализации объектов
               </h2>
               <div className="w-full flex flex-col lg:flex-row items-center gap-10 justify-center">
                 <div className="w-full lg:w-1/2 h-80 lg:h-[400px] relative border border-zinc-800 rounded-xl overflow-hidden bg-zinc-950 flex flex-col justify-between p-4 group">
@@ -1153,42 +1208,42 @@ export default function DreamZinePresentation() {
                       param: "Управление трубопроводными классами",
                       old: "Таблицы классов отданы дисциплинам без участия ДРИМ; задания в Google-таблице, многократно изменяются, нет фиксации отработки.",
                       new: "Регламентированы правила создания классов AVEVA и выдачи заданий. Внедрены шаблоны.",
-                      highlight: false,
+                      highlight: true,
                     },
                     {
                       param: "Соответствие НТД / ГОСТ",
                       old: "Отсутствует проверка: элементы добавлялись с параметрами, не существующими в НТД.",
                       new: "Проверка заявок на соответствие актуальной НТД РФ; обязательная обратная связь по выполнению.",
-                      highlight: false,
+                      highlight: true,
                     },
                     {
                       param: "Кодирование и поиск элементов",
                       old: "Элементы обезличены — нет системы поиска и логики группировки.",
-                      new: "Введено кодирование элементов для быстрого поиска, корректировки и переиспользования.",
-                      highlight: false,
+                      new: "Введено кодирование элементов для быстрого поиска, корректировки и повторного использования в других проектах.",
+                      highlight: true,
                     },
                     {
                       param: "Структура каталога",
                       old: "Все детали в общем списке без логики по классу / материалу / типу / изготовителю.",
                       new: "Каталог структурирован, понятен и адаптирован для любого нового сотрудника ДРИМ.",
-                      highlight: false,
+                      highlight: true,
                     },
                     {
                       param: "Описание деталей",
                       old: "Описание уникальное и создаётся для каждого элемента отдельно — трудно корректировать.",
-                      new: "Введён интерактивный ссылочный набор описаний — универсальный и легко редактируемый.",
-                      highlight: false,
+                      new: "Введён интерактивный ссылочный набор описаний — универсальный и легко редактируемый под любой 3D объект.",
+                      highlight: true,
                     },
                     {
                       param: "Совместимость соединений",
                       old: "Все элементы присоединялись вне зависимости от совместимости по ГОСТ.",
-                      new: "Добавлена таблица совместимых соединений — соответствие ГОСТ гарантировано.",
-                      highlight: false,
+                      new: "Добавлена таблица совместимых соединений в соответствие с ГОСТ.",
+                      highlight: true,
                     },
                     {
                       param: "Учёт крепежа",
                       old: "Крепёж отсутствует в каталоге. Добавляется в РД текстом, в подсчётах не участвует.",
-                      new: "Добавлены спецификации на крепёжные изделия — полное включение в 3D и МТО.",
+                      new: "Добавлены спецификации на крепёжные изделия — полное включение в 3D-геометрию и спецификацию.",
                       highlight: true,
                     },
                   ].map((row, i) => (
