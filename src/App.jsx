@@ -1550,7 +1550,7 @@ export default function DreamZinePresentation() {
               <div className="absolute w-96 h-96 bg-[#c6ff00]/5 rounded-full blur-[100px] pointer-events-none" />
               <h1 className="font-bold text-7xl md:text-9xl tracking-tight text-white mb-6">
                 LOOKING FORWARD
-                <span className="text-[#c6ff00]">TO DOING BETTER</span>
+                <span className="text-[#c6ff00]"> TO DOING BETTER</span>
               </h1>
               <p className="text-zinc-400 font-light text-base md:text-lg max-w-xl mx-auto leading-relaxed mb-10">
                 Создание единой цифровой архитектуры проектирования для
