@@ -14,10 +14,13 @@ const AnimatedPercentage = ({ value }) => {
 
           const step = (timestamp) => {
             if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            
+            const progress = Math.min(
+              (timestamp - startTimestamp) / duration,
+              1,
+            );
+
             const easeOut = 1 - Math.pow(1 - progress, 3);
-            
+
             setCount(Math.floor(easeOut * target));
 
             if (progress < 1) {
@@ -26,10 +29,10 @@ const AnimatedPercentage = ({ value }) => {
           };
           window.requestAnimationFrame(step);
         } else {
-          setCount(0); 
+          setCount(0);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (ref.current) observer.observe(ref.current);
@@ -1546,7 +1549,8 @@ export default function DreamZinePresentation() {
             <div className="w-full flex flex-col justify-center items-center text-center relative py-12">
               <div className="absolute w-96 h-96 bg-[#c6ff00]/5 rounded-full blur-[100px] pointer-events-none" />
               <h1 className="font-bold text-7xl md:text-9xl tracking-tight text-white mb-6">
-                ВОПРОСЫ<span className="text-[#c6ff00]">?</span>
+                LOOKING FORWARD
+                <span className="text-[#c6ff00]">TO DOING BETTER</span>
               </h1>
               <p className="text-zinc-400 font-light text-base md:text-lg max-w-xl mx-auto leading-relaxed mb-10">
                 Создание единой цифровой архитектуры проектирования для
